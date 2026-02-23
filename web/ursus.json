@@ -23,7 +23,8 @@
       "minzoom": 0,
       "maxzoom": 19,
       "scheme": "xyz",
-      "tileSize": 256
+      "tileSize": 256,
+      "attribution": "Podkład mapowy i dane OpenStreetMap"
     }
   },
   "sprite": "https://ttomasz.github.io/ttursm/sprites/protomaps-light",
