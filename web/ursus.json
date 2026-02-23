@@ -3,7 +3,7 @@
   "name": "Ursus",
   "metadata": {},
   "center": [20.8828989, 52.1960985],
-  "zoom": 13,
+  "zoom": 15,
   "sources": {
     "parking": {
       "type": "geojson",
