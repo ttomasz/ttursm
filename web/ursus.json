@@ -13,6 +13,10 @@
       "type": "geojson",
       "data": "https://ttomasz.github.io/ttursm/parking_spaces.geojson"
     },
+    "shops_and_food": {
+      "type": "geojson",
+      "data": "https://ttomasz.github.io/ttursm/shops_and_food.geojson"
+    },
     "osm": {
       "type": "raster",
       "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
@@ -22,7 +26,7 @@
       "tileSize": 256
     }
   },
-  "sprite": "",
+  "sprite": "https://ttomasz.github.io/ttursm/sprites/protomaps-light",
   "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
@@ -89,7 +93,7 @@
 ]
 ]
 ,
-        "text-size": 10,
+        "text-size": 11,
         "icon-allow-overlap": true,
         "icon-overlap": "cooperative",
         "symbol-z-order": "auto",
@@ -100,10 +104,74 @@
       },
       "paint": {
         "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "shops_and_food_symbols",
+      "type": "symbol",
+      "source": "shops_and_food",
+      "minzoom": 14,
+      "filter": ["!=", ["get", "shop"], "vacant"],
+      "layout": {
+        "icon-size": 1.5,
+        "icon-allow-overlap": true,
+        "icon-overlap": "cooperative",
+        "symbol-z-order": "auto",
+        "icon-image": [
+          "coalesce",
+          ["image", [
+            "case",
+            ["==", ["get", "amenity"], "cafe"],
+            "cafe",
+            ["==", ["get", "amenity"], "bar"],
+            "bar",
+            ["==", ["get", "amenity"], "fast_food"],
+            "fast_food",
+            ["==", ["get", "amenity"], "ice_cream"],
+            "bar",
+            ["==", ["get", "amenity"], "pub"],
+            "bar",
+            ["==", ["get", "amenity"], "restaurant"],
+            "restaurant",
+            ["==", ["get", "shop"], "garden_centre"],
+            "garden",
+            ["==", ["get", "shop"], "car_repair"],
+            "bus_stop",
+            ["==", ["get", "shop"], "car_parts"],
+            "bus_stop",
+            ["==", ["get", "shop"], "car"],
+            "bus_stop",
+            ["==", ["get", "shop"], "convenience"],
+            "convenience",
+            ["==", ["get", "shop"], "supermarket"],
+            "supermarket",
+            ["==", ["get", "shop"], "alcohol"],
+            "garden",
+            ["==", ["get", "shop"], "clothes"],
+            "clothes",
+            ["==", ["get", "shop"], "pet"],
+            "animal",
+            ["==", ["get", "shop"], "pet_grooming"],
+            "animal",
+            ["has", "shop"],
+            "convenience",
+            "unknown"
+          ]],
+          ["image", "capital"]
+        ],
+        "text-field": ["step", ["zoom"], "", 17, ["get", "name"]],
+        "text-size": 11,
+        "text-allow-overlap": true,
+        "text-overlap": "cooperative",
+        "icon-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, -17]]]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
         "text-halo-width": 2
       }
     }
   ],
-  "id": "eklfm1f",
+  "id": "ttursmstyle",
   "owner": "ttomasz"
 }
