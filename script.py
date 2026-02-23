@@ -3,14 +3,17 @@
 # dependencies = [
 #     "httpx>=0.28.1",
 #     "osm2geojson>=0.3.1",
+#     "retryhttp[httpx]>=1.4.0",
 # ]
 # [tool.uv]
 # exclude-newer = "2026-02-22T00:00:00Z"
 # ///
 
 import json
+import time
 
 import httpx
+from retryhttp import retry
 import osm2geojson
 
 
@@ -35,6 +38,15 @@ OVERPASS_QUERY_PARKING_SPACES = f"""
 way["amenity"="parking_space"](area.searchArea);
 out geom;
 """
+OVERPASS_QUERY_SHOPS_AND_FOOD = f"""
+[out:json][timeout:90];
+{OVERPASS_SEARCH_AREA}->.searchArea;
+(
+  node[shop](area.searchArea);
+  node[amenity~"bar|cafe|fast_food|ice_cream|pub|restaurant"](area.searchArea);
+);
+out geom;
+"""
 
 
 def flatten_properties(p: dict) -> None:
@@ -50,6 +62,7 @@ def flatten_properties(p: dict) -> None:
     p["@url"] = f"https://osm.org/{p['@type']}/{p['@id']}"
 
 
+@retry
 def get_parking(overpass_url: str) -> dict:
     response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING}, timeout=HTTPX_TIMEOUT)
     response.raise_for_status()
@@ -61,6 +74,7 @@ def get_parking(overpass_url: str) -> dict:
     return geojson
 
 
+@retry
 def get_parking_spaces(overpass_url: str) -> dict:
     response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING_SPACES}, timeout=HTTPX_TIMEOUT)
     response.raise_for_status()
@@ -72,20 +86,45 @@ def get_parking_spaces(overpass_url: str) -> dict:
     return geojson
 
 
+@retry
+def get_shops_and_food(overpass_url: str) -> dict:
+    response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_SHOPS_AND_FOOD}, timeout=HTTPX_TIMEOUT)
+    response.raise_for_status()
+    data = response.json()
+    geojson = osm2geojson.json2geojson(data=data, raise_on_failure=True, filter_used_refs=True)
+    for feature in geojson["features"]:
+        p = feature["properties"]
+        flatten_properties(p)
+    return geojson
+
+
 def main() -> None:
     print("Hello from script.py!")
+    # ---
     geojson_parking = get_parking(overpass_url=OVERPASS_URL)
     num_parking = len(geojson_parking["features"])
     print(f"amenity=parking elements: {num_parking}")
     if num_parking > 0:
         with open("web/parking.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_parking, fp=f)
+    time.sleep(1.0)
+    # ---
     geojson_parking_spaces = get_parking_spaces(overpass_url=OVERPASS_URL)
     num_parking_spaces = len(geojson_parking_spaces["features"])
     print(f"amenity=parking_space elements: {num_parking_spaces}")
     if num_parking_spaces > 0:
         with open("web/parking_spaces.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_parking_spaces, fp=f)
+    time.sleep(1.0)
+    # ---
+    geojson_shops_and_food = get_shops_and_food(overpass_url=OVERPASS_URL)
+    num_shops_and_food = len(geojson_shops_and_food["features"])
+    print(f"shops and food elements: {num_shops_and_food}")
+    if num_shops_and_food > 0:
+        with open("web/shops_and_food.geojson", "w", encoding="utf-8") as f:
+            json.dump(obj=geojson_shops_and_food, fp=f)
+    time.sleep(1.0)
+    # ---
     print("Done.")
 
 
