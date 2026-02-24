@@ -207,8 +207,8 @@
             ["==", ["get", "shop"], "gift"],
             "gift",
             ["has", "shop"],
-            "convenience",
-            "unknown"
+            "diamond",
+            "diamond"
           ]],
           ["image", "capital"]
         ],
