@@ -72,6 +72,18 @@
       }
     },
     {
+      "id": "shop_areas",
+      "type": "fill",
+      "source": "shops_and_food",
+      "minzoom": 15,
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-color": "rgba(0, 0, 0, 0)",
+        "fill-opacity": 1,
+        "fill-outline-color": "rgba(0, 0, 0, 1)"
+      }
+    },
+    {
       "id": "parking_label",
       "type": "symbol",
       "source": "parking",
