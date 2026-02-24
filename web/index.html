@@ -46,6 +46,33 @@
          style: "https://ttomasz.github.io/ttursm/map_style.json",
       });
       map.addControl(new maplibregl.NavigationControl());
+
+      // Add click event for layers: parking_fill, shops_and_food_symbols
+      map.on('load', function() {
+        ['parking_fill', 'shops_and_food_symbols'].forEach(layer => {
+          map.on('click', layer, function(e) {
+            if (!e.features || !e.features.length) return;
+            const feature = e.features[0];
+            const props = feature.properties;
+            let html = '<div style="min-width:120px">';
+            for (const key in props) {
+              html += `<strong>${key}</strong>: ${props[key]}<br>`;
+            }
+            html += '</div>';
+            new maplibregl.Popup()
+              .setLngLat(e.lngLat)
+              .setHTML(html)
+              .addTo(map);
+          });
+          // Change cursor to pointer
+          map.on('mouseenter', layer, function() {
+            map.getCanvas().style.cursor = 'pointer';
+          });
+          map.on('mouseleave', layer, function() {
+            map.getCanvas().style.cursor = '';
+          });
+        });
+      });
   </script>
 </body>
 </html>
