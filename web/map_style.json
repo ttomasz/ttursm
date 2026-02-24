@@ -27,7 +27,7 @@
       "attribution": "Podkład mapowy i dane OpenStreetMap"
     }
   },
-  "sprite": "https://ttomasz.github.io/ttursm/web/sprites/maki",
+  "sprite": "https://ttomasz.github.io/ttursm/sprites/maki",
   "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
