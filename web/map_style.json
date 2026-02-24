@@ -89,23 +89,31 @@
       "source": "parking",
       "minzoom": 17,
       "layout": {
+        "icon-image": ["image", "parking"],
+        "icon-offset": [
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          ["literal", [0, 0]],
+          ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
+          ["literal", [0, -17]],
+          ["literal", [0, -30]]
+        ],
         "text-field": [
-  "case",
-  ["==", ["coalesce", ["get", "capacity"], ""], ""],
-  ["format", "🅿️", {"font-scale": 1.2}],
-  [
-  "concat",
-  "🅿️\nLiczba miejsc: ",
-  ["get", "capacity"],
-  [
-    "case",
-    ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
-    "",
-    ["concat", "\n dla niepełnosprawnych: ", ["get", "capacity:disabled"]]
-  ]
-]
-]
-,
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          "",
+          [
+            "concat",
+            "Liczba miejsc: ",
+            ["get", "capacity"],
+            [
+              "case",
+              ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
+              "",
+              ["concat", "\n dla niepełnosprawnych: ", ["get", "capacity:disabled"]]
+            ]
+          ]
+        ],
         "text-size": 11,
         "icon-allow-overlap": true,
         "icon-overlap": "cooperative",
@@ -128,7 +136,7 @@
       "minzoom": 14,
       "filter": ["!=", ["get", "shop"], "vacant"],
       "layout": {
-        "icon-size": 1.5,
+        "icon-size": ["step", ["zoom"], 1, 16, 1.3, 17, 1.5, 18, 2],
         "icon-allow-overlap": true,
         "icon-overlap": "cooperative",
         "symbol-z-order": "auto",
@@ -217,7 +225,7 @@
         "text-allow-overlap": false,
         "text-overlap": "never",
         "text-optional": true,
-        "icon-offset": ["step", ["zoom"], ["literal", [0, 0]], 15, ["literal", [0, -17]]]
+        "icon-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, -17]]]
       },
       "paint": {
         "text-halo-color": "rgba(255, 255, 255, 1)",
