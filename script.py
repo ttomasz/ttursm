@@ -42,8 +42,8 @@ OVERPASS_QUERY_SHOPS_AND_FOOD = f"""
 [out:json][timeout:90];
 {OVERPASS_SEARCH_AREA}->.searchArea;
 (
-  node[shop](area.searchArea);
-  node[amenity~"bar|cafe|fast_food|ice_cream|pub|restaurant"](area.searchArea);
+  nwr[shop](area.searchArea);
+  nwr[amenity~"bar|cafe|fast_food|ice_cream|pub|restaurant"](area.searchArea);
 );
 out geom;
 """
@@ -101,21 +101,21 @@ def get_shops_and_food(overpass_url: str) -> dict:
 def main() -> None:
     print("Hello from script.py!")
     # ---
-    geojson_parking = get_parking(overpass_url=OVERPASS_URL)
-    num_parking = len(geojson_parking["features"])
-    print(f"amenity=parking elements: {num_parking}")
-    if num_parking > 0:
-        with open("web/parking.geojson", "w", encoding="utf-8") as f:
-            json.dump(obj=geojson_parking, fp=f)
-    time.sleep(1.0)
-    # ---
-    geojson_parking_spaces = get_parking_spaces(overpass_url=OVERPASS_URL)
-    num_parking_spaces = len(geojson_parking_spaces["features"])
-    print(f"amenity=parking_space elements: {num_parking_spaces}")
-    if num_parking_spaces > 0:
-        with open("web/parking_spaces.geojson", "w", encoding="utf-8") as f:
-            json.dump(obj=geojson_parking_spaces, fp=f)
-    time.sleep(1.0)
+    # geojson_parking = get_parking(overpass_url=OVERPASS_URL)
+    # num_parking = len(geojson_parking["features"])
+    # print(f"amenity=parking elements: {num_parking}")
+    # if num_parking > 0:
+    #     with open("web/parking.geojson", "w", encoding="utf-8") as f:
+    #         json.dump(obj=geojson_parking, fp=f)
+    # time.sleep(1.0)
+    # # ---
+    # geojson_parking_spaces = get_parking_spaces(overpass_url=OVERPASS_URL)
+    # num_parking_spaces = len(geojson_parking_spaces["features"])
+    # print(f"amenity=parking_space elements: {num_parking_spaces}")
+    # if num_parking_spaces > 0:
+    #     with open("web/parking_spaces.geojson", "w", encoding="utf-8") as f:
+    #         json.dump(obj=geojson_parking_spaces, fp=f)
+    # time.sleep(1.0)
     # ---
     geojson_shops_and_food = get_shops_and_food(overpass_url=OVERPASS_URL)
     num_shops_and_food = len(geojson_shops_and_food["features"])
