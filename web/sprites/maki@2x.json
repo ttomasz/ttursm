@@ -1,0 +1,1479 @@
+{
+  "aerialway": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 0
+  },
+  "airfield": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 0
+  },
+  "airport": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 0
+  },
+  "alcohol-shop": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 0
+  },
+  "american-football": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 0
+  },
+  "amusement-park": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 0
+  },
+  "animal-shelter": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 0
+  },
+  "aquarium": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 0
+  },
+  "arrow": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 0
+  },
+  "art-gallery": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 0
+  },
+  "attraction": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 0
+  },
+  "bakery": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 0
+  },
+  "bank": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 0
+  },
+  "bank-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 0
+  },
+  "bar": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 0
+  },
+  "barrier": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 68
+  },
+  "baseball": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 136
+  },
+  "basketball": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 204
+  },
+  "bbq": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 272
+  },
+  "beach": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 340
+  },
+  "beer": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 408
+  },
+  "bicycle": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 476
+  },
+  "bicycle-share": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 544
+  },
+  "blood-bank": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 612
+  },
+  "bowling-alley": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 680
+  },
+  "bridge": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 748
+  },
+  "building": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 816
+  },
+  "building-alt1": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 884
+  },
+  "bus": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 0,
+    "y": 952
+  },
+  "cafe": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 68
+  },
+  "campsite": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 68
+  },
+  "car": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 68
+  },
+  "car-rental": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 68
+  },
+  "car-repair": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 68
+  },
+  "casino": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 68
+  },
+  "castle": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 68
+  },
+  "castle-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 68
+  },
+  "caution": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 68
+  },
+  "cemetery": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 68
+  },
+  "cemetery-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 68
+  },
+  "charging-station": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 68
+  },
+  "cinema": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 68
+  },
+  "circle": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 68
+  },
+  "circle-stroked": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 136
+  },
+  "city": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 204
+  },
+  "clothing-store": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 272
+  },
+  "college": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 340
+  },
+  "college-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 408
+  },
+  "commercial": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 476
+  },
+  "communications-tower": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 544
+  },
+  "confectionery": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 612
+  },
+  "construction": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 680
+  },
+  "convenience": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 748
+  },
+  "cricket": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 816
+  },
+  "cross": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 884
+  },
+  "dam": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 68,
+    "y": 952
+  },
+  "danger": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 136
+  },
+  "defibrillator": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 136
+  },
+  "dentist": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 136
+  },
+  "diamond": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 136
+  },
+  "doctor": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 136
+  },
+  "dog-park": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 136
+  },
+  "drinking-water": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 136
+  },
+  "elevator": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 136
+  },
+  "embassy": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 136
+  },
+  "emergency-phone": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 136
+  },
+  "entrance": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 136
+  },
+  "entrance-alt1": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 136
+  },
+  "farm": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 136
+  },
+  "fast-food": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 204
+  },
+  "fence": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 272
+  },
+  "ferry": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 340
+  },
+  "ferry-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 408
+  },
+  "fire-station": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 476
+  },
+  "fire-station-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 544
+  },
+  "fitness-centre": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 612
+  },
+  "florist": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 680
+  },
+  "fuel": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 748
+  },
+  "furniture": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 816
+  },
+  "gaming": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 884
+  },
+  "garden": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 136,
+    "y": 952
+  },
+  "garden-centre": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 204
+  },
+  "gate": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 204
+  },
+  "gift": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 204
+  },
+  "globe": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 204
+  },
+  "golf": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 204
+  },
+  "grocery": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 204
+  },
+  "hairdresser": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 204
+  },
+  "harbor": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 204
+  },
+  "hardware": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 204
+  },
+  "heart": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 204
+  },
+  "heliport": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 204
+  },
+  "highway-rest-area": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 204
+  },
+  "historic": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 272
+  },
+  "home": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 340
+  },
+  "horse-riding": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 408
+  },
+  "hospital": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 476
+  },
+  "hospital-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 544
+  },
+  "hot-spring": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 612
+  },
+  "ice-cream": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 680
+  },
+  "industry": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 748
+  },
+  "information": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 816
+  },
+  "jewelry-store": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 884
+  },
+  "karaoke": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 204,
+    "y": 952
+  },
+  "landmark": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 272
+  },
+  "landmark-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 272
+  },
+  "landuse": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 272
+  },
+  "laundry": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 272
+  },
+  "library": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 272
+  },
+  "lift-gate": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 272
+  },
+  "lighthouse": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 272
+  },
+  "lighthouse-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 272
+  },
+  "lodging": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 272
+  },
+  "logging": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 272
+  },
+  "marker": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 272
+  },
+  "marker-stroked": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 340
+  },
+  "mobile-phone": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 408
+  },
+  "monument": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 476
+  },
+  "monument-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 544
+  },
+  "mountain": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 612
+  },
+  "museum": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 680
+  },
+  "music": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 748
+  },
+  "natural": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 816
+  },
+  "observation-tower": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 884
+  },
+  "optician": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 272,
+    "y": 952
+  },
+  "paint": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 340
+  },
+  "park": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 340
+  },
+  "park-alt1": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 340
+  },
+  "parking": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 340
+  },
+  "parking-garage": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 340
+  },
+  "parking-paid": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 340
+  },
+  "pharmacy": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 340
+  },
+  "picnic-site": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 340
+  },
+  "pitch": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 340
+  },
+  "place-of-worship": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 340
+  },
+  "playground": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 408
+  },
+  "police": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 476
+  },
+  "police-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 544
+  },
+  "post": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 612
+  },
+  "post-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 680
+  },
+  "prison": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 748
+  },
+  "racetrack": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 816
+  },
+  "racetrack-boat": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 884
+  },
+  "racetrack-cycling": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 340,
+    "y": 952
+  },
+  "racetrack-horse": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 408
+  },
+  "rail": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 408
+  },
+  "rail-light": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 408
+  },
+  "rail-metro": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 408
+  },
+  "ranger-station": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 408
+  },
+  "recycling": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 408
+  },
+  "religious-buddhist": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 408
+  },
+  "religious-christian": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 408
+  },
+  "religious-jewish": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 408
+  },
+  "religious-muslim": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 476
+  },
+  "religious-shinto": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 544
+  },
+  "residential-community": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 612
+  },
+  "restaurant": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 680
+  },
+  "restaurant-bbq": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 748
+  },
+  "restaurant-noodle": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 816
+  },
+  "restaurant-pizza": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 884
+  },
+  "restaurant-seafood": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 408,
+    "y": 952
+  },
+  "restaurant-sushi": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 476
+  },
+  "road-accident": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 476
+  },
+  "roadblock": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 476
+  },
+  "rocket": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 476
+  },
+  "school": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 476
+  },
+  "school-JP": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 476
+  },
+  "scooter": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 476
+  },
+  "shelter": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 476
+  },
+  "shoe": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 544
+  },
+  "shop": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 612
+  },
+  "skateboard": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 680
+  },
+  "skiing": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 748
+  },
+  "slaughterhouse": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 816
+  },
+  "slipway": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 884
+  },
+  "snowmobile": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 476,
+    "y": 952
+  },
+  "soccer": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 544
+  },
+  "square": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 544
+  },
+  "square-stroked": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 544
+  },
+  "stadium": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 544
+  },
+  "star": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 544
+  },
+  "star-stroked": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 544
+  },
+  "suitcase": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 544
+  },
+  "swimming": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 612
+  },
+  "table-tennis": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 680
+  },
+  "teahouse": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 748
+  },
+  "telephone": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 816
+  },
+  "tennis": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 884
+  },
+  "theatre": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 544,
+    "y": 952
+  },
+  "toilet": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 612
+  },
+  "toll": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 612
+  },
+  "town": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 612
+  },
+  "town-hall": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 612
+  },
+  "triangle": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 612
+  },
+  "triangle-stroked": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 612
+  },
+  "tunnel": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 680
+  },
+  "veterinary": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 748
+  },
+  "viewpoint": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 816
+  },
+  "village": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 884
+  },
+  "volcano": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 612,
+    "y": 952
+  },
+  "volleyball": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 680
+  },
+  "warehouse": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 680
+  },
+  "waste-basket": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 680
+  },
+  "watch": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 884,
+    "y": 680
+  },
+  "water": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 952,
+    "y": 680
+  },
+  "waterfall": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 748
+  },
+  "watermill": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 816
+  },
+  "wetland": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 884
+  },
+  "wheelchair": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 680,
+    "y": 952
+  },
+  "windmill": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 748,
+    "y": 748
+  },
+  "zoo": {
+    "height": 68,
+    "pixelRatio": 4,
+    "width": 68,
+    "x": 816,
+    "y": 748
+  }
+}
