@@ -50,7 +50,7 @@
          minZoom: 12,
          maxZoom: 20,
       });
-      map.addControl(new maplibregl.NavigationControl());
+      map.addControl(new maplibregl.NavigationControl(), "top-right");
 
       // Add click event for layers: parking_fill, shops_and_food_symbols
       map.on('load', function() {
