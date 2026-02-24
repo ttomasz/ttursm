@@ -87,7 +87,7 @@
   ["get", "capacity"],
   [
     "case",
-    ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""],
+    ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
     "",
     ["concat", "\n dla niepełnosprawnych: ", ["get", "capacity:disabled"]]
   ]
