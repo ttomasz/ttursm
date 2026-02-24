@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
   <meta charset="utf-8" />
   <title>Ursus</title>
@@ -42,8 +42,13 @@
   </div>
   <script>
       const map = new maplibregl.Map({
-         container: 'map',
+         container: "map",
          style: "https://ttomasz.github.io/ttursm/map_style.json",
+         dragRotate: false,
+         hash: "map",
+         maplibreLogo: true,
+         minZoom: 12,
+         maxZoom: 20,
       });
       map.addControl(new maplibregl.NavigationControl());
 
