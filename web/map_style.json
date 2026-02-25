@@ -35,7 +35,7 @@
     }
   },
   "sprite": "https://ttomasz.github.io/ttursm/sprites/maki",
-  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "glyphs": "https://ttomasz.github.io/ttursm/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "osm_basemap",
@@ -91,12 +91,59 @@
       }
     },
     {
+      "id": "parking_label_lz",
+      "type": "symbol",
+      "source": "parking",
+      "minzoom": 16,
+      "maxzoom": 18,
+      "layout": {
+        "icon-image": ["image", "parking"],
+        "text-font": ["Lato Bold"],
+        "text-offset": [0, 1],
+        "icon-offset": [
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          ["literal", [0, 0]],
+          ["literal", [0, -8]]
+        ],
+        "text-field": [
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          "",
+          [
+            "concat",
+            ["get", "capacity"],
+            [
+              "case",
+              ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
+              "",
+              ["concat", " | ", ["get", "capacity:disabled"]]
+            ]
+          ]
+        ],
+        "icon-size": ["step", ["zoom"], 0.7, 17, 1],
+        "text-size": 10,
+        "icon-allow-overlap": true,
+        "icon-overlap": "cooperative",
+        "symbol-z-order": "auto",
+        "text-allow-overlap": false,
+        "text-overlap": "never",
+        "text-ignore-placement": false,
+        "text-optional": true
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
       "id": "parking_label",
       "type": "symbol",
       "source": "parking",
-      "minzoom": 17,
+      "minzoom": 18,
       "layout": {
         "icon-image": ["image", "parking"],
+        "text-font": ["Lato Bold"],
         "text-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, 1]]],
         "icon-offset": [
           "case",
@@ -122,7 +169,7 @@
             ]
           ]
         ],
-        "text-size": 10,
+        "text-size": 11,
         "icon-allow-overlap": true,
         "icon-overlap": "cooperative",
         "symbol-z-order": "auto",
@@ -134,7 +181,7 @@
       },
       "paint": {
         "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": 2
+        "text-halo-width": 1
       }
     },
     {
@@ -229,7 +276,8 @@
           ["image", "capital"]
         ],
         "text-field": ["step", ["zoom"], "", 17, ["get", "name"]],
-        "text-size": 10,
+        "text-font": ["Lato Bold"],
+        "text-size": 12,
         "text-allow-overlap": false,
         "text-overlap": "never",
         "text-optional": true,
@@ -238,7 +286,7 @@
       },
       "paint": {
         "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": 2
+        "text-halo-width": 1
       }
     },
     {
@@ -266,6 +314,7 @@
       "filter": ["has", "point_count"],
       "layout": {
         "text-field": "{point_count}",
+        "text-font": ["Lato Bold"],
         "text-size": 14
       },
       "paint": {
