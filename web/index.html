@@ -7,8 +7,32 @@
   <script src="https://unpkg.com/maplibre-gl@5.19.0/dist/maplibre-gl.js"></script>
   <link href="https://unpkg.com/maplibre-gl@5.19.0/dist/maplibre-gl.css" rel="stylesheet" />
   <style>
-    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    body { margin: 0; padding: 0; font-family: lato; }
     #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+    @font-face {
+      font-family: "lato";
+      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Regular.woff2") format('woff2');
+    }
+
+    @font-face {
+      font-family: "lato";
+      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Bold.woff2") format('woff2');
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: "lato";
+      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-BoldItalic.woff2") format('woff2');
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    @font-face {
+      font-family: "lato";
+      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Italic.woff2") format('woff2');
+      font-style: italic;
+    }
 
     /* Legend styling */
     .legend {
@@ -19,12 +43,12 @@
       padding: 8px 10px;
       border-radius: 6px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-      font-size: 13px;
+      font-size: 14px;
       color: #111;
       line-height: 20px;
       max-width: 260px;
     }
-    .legend h4 { margin: 0 0 6px 0; font-size: 14px; }
+    .legend h4 { margin: 0 0 6px 0; font-size: 16px; }
     .legend ul { list-style: none; margin: 0; padding: 0; }
     .legend li { display: flex; align-items: center; margin: 4px 0; }
     .legend .swatch { width: 16px; height: 16px; margin-right: 8px; border-radius: 3px; flex: 0 0 16px; }
@@ -54,7 +78,7 @@
       });
       map.addControl(new maplibregl.NavigationControl(), "top-right");
 
-      // Add click event for layers: parking_fill, shops_and_food_symbols
+      // Add click event for layers: parking_fill, shops_and_food_symbols, shops_and_food_clusters
       map.on('load', function() {
         ['parking_fill', 'shops_and_food_symbols'].forEach(layer => {
           map.on('click', layer, function(e) {
@@ -78,6 +102,28 @@
           map.on('mouseleave', layer, function() {
             map.getCanvas().style.cursor = '';
           });
+        });
+        // zoom when clicking cluster
+        map.on('click', 'shops_and_food_clusters', function(e) {
+          let features = map.queryRenderedFeatures(e.point, {
+              layers: ['shops_and_food_clusters']
+          });
+          map
+          .getSource('shops_and_food_points')
+          .getClusterExpansionZoom(features[0].properties.cluster_id)
+          .then(zoom => {
+            map.easeTo({
+                center: features[0].geometry.coordinates,
+                zoom: zoom
+            });
+          });
+        });
+        // Change cursor to pointer
+        map.on('mouseenter', 'shops_and_food_clusters', function() {
+          map.getCanvas().style.cursor = 'pointer';
+        });
+        map.on('mouseleave', 'shops_and_food_clusters', function() {
+          map.getCanvas().style.cursor = '';
         });
       });
   </script>
