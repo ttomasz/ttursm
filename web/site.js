@@ -19,9 +19,51 @@ map.on('load', function () {
         const feature = e.features[0];
         const props = feature.properties;
         let html = '<div style="min-width:120px">';
-        for (const key in props) {
-            html += `<strong>${key}</strong>: ${props[key]}<br>`;
+        html += '<strong>Parking</strong><br>';
+        
+        if (props.access) {
+            const accessMap = {
+                'yes': 'Publiczny',
+                'permissive': 'Publiczny',
+                'customers': 'Dla klientów',
+                'private': 'Prywatny (np. mieszkańców, pracowników)'
+            };
+            const accessValue = accessMap[props.access] || props.access;
+            html += `<strong>Rodzaj</strong>: ${accessValue}<br>`;
+        } else {
+            html += '<strong>Rodzaj</strong>: <i>brak danych</i><br>';
         }
+        
+        if (props.fee === 'yes') {
+            html += '<strong>Płatny</strong>: Tak<br>';
+            if (props.charge) {
+                let oplata = props.charge.replace('hour', 'h');
+                html += `<strong>Opłata</strong>: ${oplata}<br>`;
+            }
+        } else if (props.fee === 'no') {
+            html += '<strong>Płatny</strong>: Nie<br>';
+        } else {
+            html += '<strong>Płatny</strong>: <i>brak danych</i><br>';
+        }
+        
+        if (props.capacity) {
+            html += `<strong>Liczba miejsc</strong>: ${props.capacity}<br>`;
+        } else {
+            html += `<strong>Liczba miejsc</strong>: <i>brak danych</i><br>`;
+        }
+        
+        if (props['capacity:disabled']) {
+            html += `<strong>Liczba miejsc dla niepełnosprawnych</strong>: ${props['capacity:disabled']}<br>`;
+        }
+
+        html += `<a href="${props['@url']}" target="_blank">Link do obiektu w OSM</a>`;
+
+        // html += '<hr>'
+        // html += '<div class="popup-section-foldable">';
+        // for (const key in props) {
+        //     html += `<strong>${key}</strong>: ${props[key]}<br>`;
+        // }
+        // html += '</div>';
         html += '</div>';
         new maplibregl.Popup()
             .setLngLat(e.lngLat)
@@ -33,6 +75,7 @@ map.on('load', function () {
         const feature = e.features[0];
         const props = feature.properties;
         let html = '<div style="min-width:120px">';
+        html += '<hr>';
         for (const key in props) {
             html += `<strong>${key}</strong>: ${props[key]}<br>`;
         }
