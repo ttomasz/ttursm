@@ -5,10 +5,24 @@ Tagi OSM opisane:
 - https://wiki.openstreetmap.org/wiki/Pl:Key:amenity
 - https://wiki.openstreetmap.org/wiki/Pl:Key:leisure
 
+## Parking
+Parkingi.
+
+Kolor: #0552b6
+
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/parking.svg)
+
 ## Medyczne
 Apteki, okuliści, etc.
 
 Kolor: #aa0a0a
+
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/medyczne-pharmacy.svg)
+- ![Ikona](./web/maki-icons/svgs/medyczne-veterinary.svg)
+- ![Ikona](./web/maki-icons/svgs/medyczne-dentist.svg)
+- ![Ikona](./web/maki-icons/svgs/medyczne-optician.svg)
 
 Tagi OSM:
 ```
@@ -52,6 +66,16 @@ Gdzie można zjeść (na miejscu lub na wynos). Restauracje, bary, etc.
 
 Kolor: #964c06
 
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/gastronomia-bar.svg)
+- ![Ikona](./web/maki-icons/svgs/gastronomia-beer.svg)
+- ![Ikona](./web/maki-icons/svgs/gastronomia-cafe.svg)
+- ![Ikona](./web/maki-icons/svgs/gastronomia-ice-cream.svg)
+- ![Ikona](./web/maki-icons/svgs/gastronomia-restaurant.svg)
+- ![Ikona](./web/maki-icons/svgs/gastronomia-restaurant-noodle.svg)
+- ![Ikona](./web/maki-icons/svgs/gastronomia-restaurant-pizza.svg)
+- ![Ikona](./web/maki-icons/svgs/gastronomia-restaurant-sushi.svg)
+
 Tagi OSM:
 ```
 amenity:
@@ -67,6 +91,29 @@ amenity:
 Gdzie coś kupujesz.
 
 Kolor: #0d4d07
+
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-alcohol-shop.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-animal-shelter.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-aquarium.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-bakery.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-bicycle.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-building.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-car.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-clothing-store.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-convenience.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-florist.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-grocery.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-jewelry-store.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-laundry.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-library.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-marker.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-paint.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-school.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-scooter.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-shoe.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-shop.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-slaughterhouse.svg)
 
 Tagi OSM:
 ```
@@ -146,6 +193,9 @@ shop:
 
 ### Podkategorie
 #### Centrum handlowe
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-building.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -153,6 +203,9 @@ shop:
 ```
 
 #### Monopolowy
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-alcohol-shop.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -160,6 +213,9 @@ shop:
 - wine
 ```
 #### Piekarnia, cukiernia
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-bakery.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -167,6 +223,9 @@ shop:
 - pastry
 ```
 #### Drogeria
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-shop.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -174,6 +233,10 @@ shop:
 - cosmetics
 ```
 #### Odzieżowy, obuwie
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-clothing-store.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-shoe.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -181,13 +244,19 @@ shop:
 - shoes
 ```
 #### Dziecięcy
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-scooter.svg)
+
 Tagi OSM:
 ```
 shop:
 - baby_goods
 - toys
 ```
-#### Supermarket, dyskont
+#### Supermarket
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-grocery.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -195,30 +264,54 @@ shop:
 - department_store
 ```
 #### Osiedlowy
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-convenience.svg)
+
 Tagi OSM:
 ```
 shop:
 - convenience
 ```
 #### Warzywniak
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-school.svg)
+
 Tagi OSM:
 ```
 shop:
 - greengrocer
 ```
 #### Rzeźnik
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-slaughterhouse.svg)
+
 Tagi OSM:
 ```
 shop:
 - butcher
 ```
 #### Kwiaciarnia
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-florist.svg)
+
 Tagi OSM:
 ```
 shop:
 - florist
 ```
 #### Pozostałe
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/sklep-laundry.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-bicycle.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-library.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-car.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-paint.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-animal-shelter.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-aquarium.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-convenience.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-marker.svg)
+- ![Ikona](./web/maki-icons/svgs/sklep-jewelry-store.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -283,6 +376,9 @@ shop:
 
 Kolor: #242424
 
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/pusty-marker-stroked.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -293,6 +389,16 @@ shop:
 Ktoś świadczy usługę lub korzystasz ze sprzętu.
 
 Kolor: #790888
+
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/usluga-airport.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-car-repair.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-clothing-store.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-hairdresser.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-heart.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-laundry.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-marker.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-shoe.svg)
 
 Tagi OSM:
 ```
@@ -318,24 +424,37 @@ shop:
 
 ### Podkategorie
 #### Zakład fryzjerski
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/usluga-hairdresser.svg)
+
 Tagi OSM:
 ```
 shop:
 - hairdresser
 ```
 #### Salon piękności
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/usluga-heart.svg)
+
 Tagi OSM:
 ```
 shop:
 - beauty
 ```
 #### Mechanik
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/usluga-car-repair.svg)
+
 Tagi OSM:
 ```
 shop:
 - car_repair
 ```
 #### Zakład krawiecki, szewc
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/usluga-clothing-store.svg)
+- ![Ikona](./web/maki-icons/svgs/usluga-shoe.svg)
+
 Tagi OSM:
 ```
 shop:
@@ -343,6 +462,9 @@ shop:
 - shoe_repair
 ```
 #### Pozostałe
+Ikony:
+- ![Ikona](./web/maki-icons/svgs/usluga-marker.svg)
+
 Tagi OSM:
 ```
 shop:

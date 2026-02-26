@@ -95,6 +95,55 @@ SUBCATEGORY_TYPE = Literal[
     "fryzjer",
     None,
 ]
+ICON_TYPE = Literal[
+    "pusty-diamond",
+    "gastronomia-bar",
+    "gastronomia-beer",
+    "gastronomia-cafe",
+    "gastronomia-ice-cream",
+    "gastronomia-restaurant-noodle",
+    "gastronomia-restaurant-pizza",
+    "gastronomia-restaurant-sushi",
+    "gastronomia-restaurant",
+    "medyczne-dentist",
+    "medyczne-optician",
+    "medyczne-pharmacy",
+    "medyczne-veterinary",
+    "parking-garage",
+    "parking-paid",
+    "parking",
+    "pusty-marker-stroked",
+    "sklep-alcohol-shop",
+    "sklep-animal-shelter",
+    "sklep-aquarium",
+    "sklep-bakery",
+    "sklep-bicycle",
+    "sklep-building",
+    "sklep-car",
+    "sklep-clothing-store",
+    "sklep-convenience",
+    "sklep-florist",
+    "sklep-grocery",
+    "sklep-jewelry-store",
+    "sklep-laundry",
+    "sklep-library",
+    "sklep-marker",
+    "sklep-paint",
+    "sklep-school",
+    "sklep-scooter",
+    "sklep-shoe",
+    "sklep-shop",
+    "sklep-slaughterhouse",
+    "usluga-airport",
+    "usluga-car-repair",
+    "usluga-clothing-store",
+    "usluga-dog-park",
+    "usluga-hairdresser",
+    "usluga-heart",
+    "usluga-laundry",
+    "usluga-marker",
+    "usluga-shoe",
+]
 
 
 class Summary(TypedDict):
@@ -127,110 +176,174 @@ def flatten_properties(properties: dict) -> None:
 def classify(properties: dict) -> None:
     category: CATEGORY_TYPE = None
     subcategory: SUBCATEGORY_TYPE = None
+    icon: ICON_TYPE = "pusty-diamond"
     match properties.get("amenity"):
         case None:
             pass
         case "bar":
             category = "gastronomia"
+            icon = "gastronomia-bar"
         case "cafe":
             category = "gastronomia"
+            icon = "gastronomia-cafe"
         case "fast_food":
             category = "gastronomia"
+            icon = "gastronomia-restaurant"
         case "ice_cream":
             category = "gastronomia"
+            icon = "gastronomia-ice-cream"
         case "pub":
             category = "gastronomia"
+            icon = "gastronomia-bar"
         case "restaurant":
             category = "gastronomia"
-        case "bar":
-            category = "gastronomia"
+            icon = "gastronomia-restaurant"
         case "pharmacy":
             category = "medyczne"
             subcategory = "apteka"
+            icon = "medyczne-pharmacy"
         case "veterinary":
             category = "medyczne"
             subcategory = "weterynarz"
+            icon = "medyczne-veterinary"
         case "dentist":
             category = "medyczne"
             subcategory = "dentysta"
+            icon = "medyczne-dentist"
     match properties.get("shop"):
         case None:
             pass
         case "vacant":
             category = "pusty"
+            icon = "pusty-marker-stroked"
         case "alcohol" | "wine":
             category = "sklep"
             subcategory = "monopolowy"
+            icon = "sklep-alcohol-shop"
         case "bakery" | "pastry":
             category = "sklep"
             subcategory = "piekarnia_cukiernia"
+            icon = "sklep-bakery"
         case "butcher":
             category = "sklep"
             subcategory = "rzeznik"
+            icon = "sklep-slaughterhouse"
         case "chemist" | "cosmetics":
             category = "sklep"
             subcategory = "drogeria"
+            icon = "sklep-shop"
         case "clothes" | "shoes":
             category = "sklep"
             subcategory = "odziez_obuwie"
+            icon = "sklep-clothing-store"
         case "baby_goods" | "toys":
             category = "sklep"
             subcategory = "dzieciecy"
+            icon = "sklep-scooter"
         case "supermarket" | "department_store":
             category = "sklep"
             subcategory = "market"
+            icon = "sklep-grocery"
         case "convenience":
             category = "sklep"
             subcategory = "osiedlowy"
+            icon = "sklep-convenience"
         case "greengrocer":
             category = "sklep"
             subcategory = "warzywniak"
+            icon = "sklep-school"
         case "florist":
             category = "sklep"
             subcategory = "kwiaciarnia"
+            icon = "sklep-florist"
         case "mall":
             category = "sklep"
             subcategory = "ch"
+            icon = "sklep-building"
+        case "bicycle":
+            category = "sklep"
+            subcategory = "sklepy_pozostale"
+            icon = "sklep-bicycle"
+        case "books":
+            category = "sklep"
+            subcategory = "sklepy_pozostale"
+            icon = "sklep-library"
+        case "car":
+            category = "sklep"
+            subcategory = "sklepy_pozostale"
+            icon = "sklep-car"
+        case "pet":
+            category = "sklep"
+            subcategory = "sklepy_pozostale"
+            icon = "sklep-animal-shelter"
+        case "jewelry":
+            category = "sklep"
+            subcategory = "sklepy_pozostale"
+            icon = "sklep-jewelry-store"
         case (
-            "antiques" | "appliance" | "bag" | "bicycle" | "books" |
-            "business_machines" | "car" | "car_parts" | "chocolate" |
+            "antiques" | "appliance" | "bag" |
+            "business_machines" | "car_parts" | "chocolate" |
             "coffee" | "confectionery" | "deli" | "doityourself" | "e-cigarette" |
             "electronics" | "farm" | "fashion_accessories" | "frozen_food" | "furniture" |
             "furniture_parts" | "games" | "garden_centre" | "gas" | "general" |
             "gift" | "hairdresser_supply" | "hardware" | "health_food" | "herbalist" |
-            "household_linen" | "houseware" | "interior_decoration" | "jewelry" | "kiosk" |
+            "household_linen" | "houseware" | "interior_decoration" | "kiosk" |
             "kitchen" | "medical_supply" | "mobile_phone" | "newsagent" | "outdoor" |
-            "paint" | "party" | "pawnbroker" | "perfumery" | "pet" |
+            "paint" | "party" | "pawnbroker" | "perfumery" |
             "printer_ink" | "seafood" | "sewing" | "sports" | "stationery" |
             "tea" | "tobacco" | "tyres" | "variety_store" | "video_games" |
             "watches"
         ):
             category = "sklep"
             subcategory = "sklepy_pozostale"
+            icon = "sklep-marker"
         case "beauty":
             category = "usluga"
             subcategory = "beauty"
+            icon = "usluga-heart"
         case "hairdresser":
             category = "usluga"
             subcategory = "fryzjer"
+            icon = "usluga-hairdresser"
         case "car_repair":
             category = "usluga"
             subcategory = "mechanik"
-        case "tailor" | "shoe_repair":
+            icon = "usluga-car-repair"
+        case "tailor":
             category = "usluga"
             subcategory = "krawiec_szewc"
+            icon = "usluga-clothing-store"
+        case "shoe_repair":
+            category = "usluga"
+            subcategory = "krawiec_szewc"
+            icon = "usluga-shoe"
+        case "dry_cleaning" | "laundry":
+            category = "usluga"
+            subcategory = "uslugi_pozostale"
+            icon = "usluga-laundry"
+        case "pet_grooming":
+            category = "usluga"
+            subcategory = "uslugi_pozostale"
+            icon = "usluga-dog-park"
+        case "travel_agency":
+            category = "usluga"
+            subcategory = "uslugi_pozostale"
+            icon = "usluga-airport"
         case (
-            "bookmaker" | "copyshop" | "dry_cleaning" | "locksmith" | "lottery" |
-            "laundry" | "pet_grooming" | "repair" | "tool_hire" | "travel_agency" |
+            "bookmaker" | "copyshop" | "locksmith" | "lottery" |
+            "pet_grooming" | "repair" | "tool_hire" |
             "massage" | "tattoo"
         ):
             category = "usluga"
             subcategory = "uslugi_pozostale"
+            icon = "usluga-marker"
         case "optician":
             category = "medyczne"
             subcategory = "optyk"
+            icon = "medyczne-optician"
     properties["@kategoria"] = category
     properties["@podkategoria"] = subcategory
+    properties["@ikonka"] = icon
 
 
 def prepare_summary(geojson_poi: dict, download_dt: datetime) -> Summary:
@@ -334,10 +447,10 @@ def main() -> None:
     time.sleep(2.0)
     # ---
     geojson_poi = get_poi(overpass_url=OVERPASS_URL)
-    num_shops_and_food_points = len(geojson_poi["features"])
-    print(f"shops and food point elements: {num_shops_and_food_points}")
-    if num_shops_and_food_points > 0:
-        with open("web/data/shops_and_food_points.geojson", "w", encoding="utf-8") as f:
+    num_poi = len(geojson_poi["features"])
+    print(f"shops and food point elements: {num_poi}")
+    if num_poi > 0:
+        with open("web/data/poi.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_poi, fp=f)
     summary = prepare_summary(geojson_poi=geojson_poi, download_dt=start_dt)
     with open("web/data/summary.json", "w", encoding="utf-8") as f:
@@ -345,10 +458,10 @@ def main() -> None:
     time.sleep(2.0)
     # ---
     geojson_poi_outlines = get_poi_outlines(overpass_url=OVERPASS_URL)
-    num_shops_and_food_outlines = len(geojson_poi_outlines["features"])
-    print(f"shops and food outline elements: {num_shops_and_food_outlines}")
-    if num_shops_and_food_outlines > 0:
-        with open("web/data/shops_and_food_polygons.geojson", "w", encoding="utf-8") as f:
+    num_poi_outlines = len(geojson_poi_outlines["features"])
+    print(f"shops and food outline elements: {num_poi_outlines}")
+    if num_poi_outlines > 0:
+        with open("web/data/poi_outlines.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_poi_outlines, fp=f)
     # ---
     print("Done.")
