@@ -6,68 +6,34 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <script src="https://unpkg.com/maplibre-gl@5.19.0/dist/maplibre-gl.js"></script>
   <link href="https://unpkg.com/maplibre-gl@5.19.0/dist/maplibre-gl.css" rel="stylesheet" />
-  <style>
-    body { margin: 0; padding: 0; font-family: lato; }
-    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-
-    @font-face {
-      font-family: "lato";
-      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Regular.woff2") format('woff2');
-    }
-
-    @font-face {
-      font-family: "lato";
-      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Bold.woff2") format('woff2');
-      font-weight: bold;
-    }
-
-    @font-face {
-      font-family: "lato";
-      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-BoldItalic.woff2") format('woff2');
-      font-weight: bold;
-      font-style: italic;
-    }
-
-    @font-face {
-      font-family: "lato";
-      src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Italic.woff2") format('woff2');
-      font-style: italic;
-    }
-
-    /* Legend styling */
-    .legend {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 8px 10px;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-      font-size: 14px;
-      color: #111;
-      line-height: 20px;
-      max-width: 260px;
-    }
-    .legend h4 { margin: 0 0 6px 0; font-size: 16px; }
-    .legend ul { list-style: none; margin: 0; padding: 0; }
-    .legend li { display: flex; align-items: center; margin: 4px 0; }
-    .legend .swatch { width: 16px; height: 16px; margin-right: 8px; border-radius: 3px; flex: 0 0 16px; }
-  </style>
+  <link href="https://ttomasz.github.io/ttursm/style.css" rel="stylesheet" />
 </head>
 <body>
   <div id="map"></div>
   <div class="legend" aria-hidden="false">
-    <h4>Miejsca parkingowe naziemne:</h4>
-    <ul>
-      <li><span class="swatch" style="background: rgba(245, 131, 255, 0.7);"></span> dla klientów</li>
-      <li><span class="swatch" style="background: rgba(64, 64, 64, 0.7);"></span> prywatne (np. mieszkańców)</li>
-      <li><span class="swatch" style="background: rgba(20, 100, 200, 0.7);"></span> publiczne</li>
-    </ul>
+    <div>
+      <h4>Miejsca parkingowe naziemne:</h4>
+      <ul>
+        <li><span class="swatch" style="background: rgba(245, 131, 255, 0.7);"></span> dla klientów</li>
+        <li><span class="swatch" style="background: rgba(64, 64, 64, 0.7);"></span> prywatne (np. mieszkańców)</li>
+        <li><span class="swatch" style="background: rgba(20, 100, 200, 0.7);"></span> publiczne</li>
+      </ul>
+    </div>
+    </hr>
+    <div>
+      <h4>Lokale:</h4>
+      <ul>
+        <li><span class="swatch-poi" style="background: #aa0a0a;"></span>Zdrowie</li>
+        <li><span class="swatch-poi" style="background: #964c06;"></span>Gastronomia</li>
+        <li><span class="swatch-poi" style="background: #0d4d07;"></span>Sklepy</li>
+        <li><span class="swatch-poi" style="background: #790888;"></span>Usługi</li>
+      </ul>
+    </div>
   </div>
   <script>
       const map = new maplibregl.Map({
          container: "map",
-         style: "https://ttomasz.github.io/ttursm/map_style.json",
+         style: "https://ttomasz.github.io/ttursm/styles/map_style.json",
          dragRotate: false,
          hash: "map",
          maplibreLogo: true,

@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "lato";
+    src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Regular.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "lato";
+    src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Bold.woff2") format('woff2');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "lato";
+    src: url("https://ttomasz.github.io/ttursm/fonts/Lato-BoldItalic.woff2") format('woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "lato";
+    src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Italic.woff2") format('woff2');
+    font-style: italic;
+}
+
+body { margin: 0; padding: 0; font-family: lato; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+.legend {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    font-size: 14px;
+    color: #111;
+    line-height: 20px;
+    max-width: 260px;
+}
+.legend h4 { margin: 0 0 6px 0; font-size: 16px; }
+.legend ul { list-style: none; margin: 0; padding: 0; }
+.legend li { display: flex; align-items: center; margin: 4px 0; }
+.legend .swatch { width: 16px; height: 16px; margin-right: 8px; border-radius: 3px; flex: 0 0 16px; }
+.legend .swatch-poi { width: 16px; height: 16px; margin-right: 8px; border-radius: 3px; flex: 0 0 16px; }

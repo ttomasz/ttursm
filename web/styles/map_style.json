@@ -7,22 +7,22 @@
   "sources": {
     "parking": {
       "type": "geojson",
-      "data": "https://ttomasz.github.io/ttursm/parking.geojson"
+      "data": "https://ttomasz.github.io/ttursm/data/parking.geojson"
     },
     "parking_spaces": {
       "type": "geojson",
-      "data": "https://ttomasz.github.io/ttursm/parking_spaces.geojson"
+      "data": "https://ttomasz.github.io/ttursm/data/parking_spaces.geojson"
     },
     "shops_and_food_points": {
       "type": "geojson",
-      "data": "https://ttomasz.github.io/ttursm/shops_and_food_points.geojson",
+      "data": "https://ttomasz.github.io/ttursm/data/shops_and_food_points.geojson",
       "cluster": true,
       "clusterMinPoints": 3,
       "clusterRadius": 30
     },
     "shops_and_food_polygons": {
       "type": "geojson",
-      "data": "https://ttomasz.github.io/ttursm/shops_and_food_polygons.geojson"
+      "data": "https://ttomasz.github.io/ttursm/data/shops_and_food_polygons.geojson"
     },
     "osm": {
       "type": "raster",

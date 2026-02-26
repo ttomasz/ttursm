@@ -119,7 +119,7 @@ def main() -> None:
     num_parking = len(geojson_parking["features"])
     print(f"amenity=parking elements: {num_parking}")
     if num_parking > 0:
-        with open("web/parking.geojson", "w", encoding="utf-8") as f:
+        with open("web/data/parking.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_parking, fp=f)
     time.sleep(1.0)
     # ---
@@ -127,7 +127,7 @@ def main() -> None:
     num_parking_spaces = len(geojson_parking_spaces["features"])
     print(f"amenity=parking_space elements: {num_parking_spaces}")
     if num_parking_spaces > 0:
-        with open("web/parking_spaces.geojson", "w", encoding="utf-8") as f:
+        with open("web/data/parking_spaces.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_parking_spaces, fp=f)
     time.sleep(1.0)
     # ---
@@ -135,12 +135,12 @@ def main() -> None:
     num_shops_and_food_points = len(geojson_shops_and_food_points["features"])
     print(f"shops and food elements: {num_shops_and_food_points}")
     if num_shops_and_food_points > 0:
-        with open("web/shops_and_food_points.geojson", "w", encoding="utf-8") as f:
+        with open("web/data/shops_and_food_points.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_shops_and_food_points, fp=f)
     num_shops_and_food_outlines = len(geojson_shops_and_food_outlines["features"])
     print(f"shops and food outline elements: {num_shops_and_food_outlines}")
     if num_shops_and_food_outlines > 0:
-        with open("web/shops_and_food_polygons.geojson", "w", encoding="utf-8") as f:
+        with open("web/data/shops_and_food_polygons.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_shops_and_food_outlines, fp=f)
     time.sleep(1.0)
     # ---
