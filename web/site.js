@@ -11,73 +11,94 @@ const map = new maplibregl.Map({
 });
 map.addControl(new maplibregl.NavigationControl(), "top-right");
 
-// Add click event for layers: parking_fill, shops_and_food_symbols, shops_and_food_clusters
-map.on('load', function() {
-['parking_fill', 'shops_and_food_symbols'].forEach(layer => {
-    map.on('click', layer, function(e) {
-    if (!e.features || !e.features.length) return;
-    const feature = e.features[0];
-    const props = feature.properties;
-    let html = '<div style="min-width:120px">';
-    for (const key in props) {
-        html += `<strong>${key}</strong>: ${props[key]}<br>`;
-    }
-    html += '</div>';
-    new maplibregl.Popup()
-        .setLngLat(e.lngLat)
-        .setHTML(html)
-        .addTo(map);
+map.on('load', function () {
+
+    // click feature to get popup with info
+    map.on('click', 'parking_fill', function (e) {
+        if (!e.features || !e.features.length) return;
+        const feature = e.features[0];
+        const props = feature.properties;
+        let html = '<div style="min-width:120px">';
+        for (const key in props) {
+            html += `<strong>${key}</strong>: ${props[key]}<br>`;
+        }
+        html += '</div>';
+        new maplibregl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(html)
+            .addTo(map);
     });
-    // Change cursor to pointer
-    map.on('mouseenter', layer, function() {
-    map.getCanvas().style.cursor = 'pointer';
+    map.on('click', 'shops_and_food_symbols', function (e) {
+        if (!e.features || !e.features.length) return;
+        const feature = e.features[0];
+        const props = feature.properties;
+        let html = '<div style="min-width:120px">';
+        for (const key in props) {
+            html += `<strong>${key}</strong>: ${props[key]}<br>`;
+        }
+        html += '</div>';
+        new maplibregl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(html)
+            .addTo(map);
     });
-    map.on('mouseleave', layer, function() {
-    map.getCanvas().style.cursor = '';
+
+    // zoom when clicking cluster
+    map.on('click', 'shops_and_food_clusters', function (e) {
+        let features = map.queryRenderedFeatures(e.point, {
+            layers: ['shops_and_food_clusters']
+        });
+        map
+            .getSource('shops_and_food_points')
+            .getClusterExpansionZoom(features[0].properties.cluster_id)
+            .then(zoom => {
+                map.easeTo({
+                    center: features[0].geometry.coordinates,
+                    zoom: zoom
+                });
+            });
     });
-});
-// zoom when clicking cluster
-map.on('click', 'shops_and_food_clusters', function(e) {
-    let features = map.queryRenderedFeatures(e.point, {
-        layers: ['shops_and_food_clusters']
+
+    // Change cursor to pointer when hovering over object
+    map.on('mouseenter', 'shops_and_food_symbols', function () {
+        map.getCanvas().style.cursor = 'pointer';
     });
-    map
-    .getSource('shops_and_food_points')
-    .getClusterExpansionZoom(features[0].properties.cluster_id)
-    .then(zoom => {
-    map.easeTo({
-        center: features[0].geometry.coordinates,
-        zoom: zoom
+    map.on('mouseleave', 'shops_and_food_symbols', function () {
+        map.getCanvas().style.cursor = '';
     });
+    map.on('mouseenter', 'parking_fill', function () {
+        map.getCanvas().style.cursor = 'pointer';
     });
-});
-// Change cursor to pointer
-map.on('mouseenter', 'shops_and_food_clusters', function() {
-    map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseleave', 'shops_and_food_clusters', function() {
-    map.getCanvas().style.cursor = '';
-});
+    map.on('mouseleave', 'parking_fill', function () {
+        map.getCanvas().style.cursor = '';
+    });
+    map.on('mouseenter', 'shops_and_food_clusters', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'shops_and_food_clusters', function () {
+        map.getCanvas().style.cursor = '';
+    });
+
 });
 
 // load summary
 fetch("https://ttomasz.github.io/ttursm/data/summary.json")
-.then(response => response.json())
-.then(data => {
-    document.getElementById("count-med").textContent = `(${data.med})`;
-    document.getElementById("count-food").textContent = `(${data.food})`;
-    document.getElementById("count-shops").textContent = `(${data.shops})`;
-    document.getElementById("count-services").textContent = `(${data.services})`;
-    document.getElementById("count-vacant").textContent = `(${data.vacant})`;
-    document.getElementById("data-date").textContent = data.download_dt;
-    for (let [key, value] of Object.entries(data.poi_subcategories)) {
-        let doc = document.getElementById(`subcount-${key}`);
-        if (doc !== null) {
-            doc.textContent = `(${value})`;
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("count-med").textContent = `(${data.med})`;
+        document.getElementById("count-food").textContent = `(${data.food})`;
+        document.getElementById("count-shops").textContent = `(${data.shops})`;
+        document.getElementById("count-services").textContent = `(${data.services})`;
+        document.getElementById("count-vacant").textContent = `(${data.vacant})`;
+        document.getElementById("data-date").textContent = data.download_dt;
+        for (let [key, value] of Object.entries(data.poi_subcategories)) {
+            let doc = document.getElementById(`subcount-${key}`);
+            if (doc !== null) {
+                doc.textContent = `(${value})`;
+            }
         }
-    }
-})
-.catch(error => {
-console.error("Error loading summary data:", error);
-document.getElementById("data-date").textContent = "Błąd ładowania danych";
-});
+    })
+    .catch(error => {
+        console.error("Error loading summary data:", error);
+        document.getElementById("data-date").textContent = "Błąd ładowania danych";
+    });
