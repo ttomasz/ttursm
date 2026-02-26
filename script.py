@@ -58,17 +58,17 @@ out skel geom;
 """
 
 
-def flatten_properties(p: dict) -> None:
-    if "nodes" in p:
-        del p["nodes"]
-    p["@type"] = p["type"]
-    del p["type"]
-    p["@id"] = p["id"]
-    del p["id"]
-    for k, v in p["tags"].items():
-        p[k] = v
-    del p["tags"]
-    p["@url"] = f"https://osm.org/{p['@type']}/{p['@id']}"
+def flatten_properties(properties: dict) -> None:
+    if "nodes" in properties:
+        del properties["nodes"]
+    properties["@type"] = properties["type"]
+    del properties["type"]
+    properties["@id"] = properties["id"]
+    del properties["id"]
+    for k, v in properties["tags"].items():
+        properties[k] = v
+    del properties["tags"]
+    properties["@url"] = f"https://osm.org/{properties['@type']}/{properties['@id']}"
 
 
 @retry
