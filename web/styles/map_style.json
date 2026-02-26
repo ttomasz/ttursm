@@ -13,16 +13,16 @@
       "type": "geojson",
       "data": "https://ttomasz.github.io/ttursm/data/parking_spaces.geojson"
     },
-    "shops_and_food_points": {
+    "poi": {
       "type": "geojson",
-      "data": "https://ttomasz.github.io/ttursm/data/shops_and_food_points.geojson",
+      "data": "https://ttomasz.github.io/ttursm/data/poi.geojson",
       "cluster": true,
       "clusterMinPoints": 3,
       "clusterRadius": 30
     },
-    "shops_and_food_polygons": {
+    "poi_outlines": {
       "type": "geojson",
-      "data": "https://ttomasz.github.io/ttursm/data/shops_and_food_polygons.geojson"
+      "data": "https://ttomasz.github.io/ttursm/data/poi_outlines.geojson"
     },
     "osm": {
       "type": "raster",
@@ -81,7 +81,7 @@
     {
       "id": "shop_areas",
       "type": "fill",
-      "source": "shops_and_food_polygons",
+      "source": "poi_outlines",
       "minzoom": 15,
       "layout": {"visibility": "visible"},
       "paint": {
@@ -187,9 +187,9 @@
     {
       "id": "shops_and_food_symbols",
       "type": "symbol",
-      "source": "shops_and_food_points",
+      "source": "poi",
       "minzoom": 14,
-      "filter": ["all", ["!=", ["get", "shop"], "vacant"], ["!", ["has", "point_count"]]],
+      "filter": ["!", ["has", "point_count"]],
       "layout": {
         "icon-size": ["step", ["zoom"], 1, 16, 1.1, 17, 1.2],
         "icon-allow-overlap": true,
@@ -197,83 +197,8 @@
         "symbol-z-order": "auto",
         "icon-image": [
           "coalesce",
-          ["image", [
-            "case",
-            ["==", ["get", "amenity"], "cafe"],
-            "cafe",
-            ["==", ["get", "amenity"], "bar"],
-            "bar",
-            ["==", ["get", "amenity"], "fast_food"],
-            "fast-food",
-            ["==", ["get", "amenity"], "ice_cream"],
-            "ice-cream",
-            ["==", ["get", "amenity"], "pub"],
-            "beer",
-            ["==", ["get", "amenity"], "restaurant"],
-            "restaurant",
-            ["==", ["get", "shop"], "garden_centre"],
-            "garden-centre",
-            ["==", ["get", "shop"], "car_repair"],
-            "car-repair",
-            ["==", ["get", "shop"], "car_parts"],
-            "car-repair",
-            ["==", ["get", "shop"], "car"],
-            "car-repair",
-            ["==", ["get", "shop"], "convenience"],
-            "convenience",
-            ["==", ["get", "shop"], "supermarket"],
-            "convenience",
-            ["==", ["get", "shop"], "alcohol"],
-            "alcohol-shop",
-            ["==", ["get", "shop"], "clothes"],
-            "clothing-store",
-            ["==", ["get", "shop"], "pet"],
-            "aquarium",
-            ["==", ["get", "shop"], "pet_grooming"],
-            "dog-park",
-            ["==", ["get", "shop"], "jewelry"],
-            "jewelry-store",
-            ["==", ["get", "shop"], "optician"],
-            "optician",
-            ["==", ["get", "shop"], "hairdresser"],
-            "hairdresser",
-            ["==", ["get", "shop"], "butcher"],
-            "slaughterhouse",
-            ["==", ["get", "shop"], "beauty"],
-            "hairdresser",
-            ["==", ["get", "shop"], "pawnbroker"],
-            "bank",
-            ["==", ["get", "shop"], "florist"],
-            "florist",
-            ["==", ["get", "shop"], "bakery"],
-            "bakery",
-            ["==", ["get", "shop"], "doityourself"],
-            "paint",
-            ["==", ["get", "shop"], "tattoo"],
-            "hairdresser",
-            ["==", ["get", "shop"], "tailor"],
-            "hairdresser",
-            ["==", ["get", "shop"], "travel_agency"],
-            "car",
-            ["==", ["get", "shop"], "furniture"],
-            "furniture",
-            ["==", ["get", "shop"], "dry_cleaning"],
-            "laundry",
-            ["==", ["get", "shop"], "laundry"],
-            "laundry",
-            ["==", ["get", "shop"], "bicycle"],
-            "bicycle",
-            ["==", ["get", "shop"], "massage"],
-            "lodging",
-            ["==", ["get", "shop"], "shoe_repair"],
-            "shoe",
-            ["==", ["get", "shop"], "gift"],
-            "gift",
-            ["has", "shop"],
-            "diamond",
-            "diamond"
-          ]],
-          ["image", "capital"]
+          ["image", ["get", "@ikonka"]],
+          ["image", "pusty-diamond"]
         ],
         "text-field": ["step", ["zoom"], "", 17, ["get", "name"]],
         "text-font": ["Lato Bold"],
@@ -292,7 +217,7 @@
     {
       "id": "shops_and_food_clusters",
       "type": "circle",
-      "source": "shops_and_food_points",
+      "source": "poi",
       "filter": ["has", "point_count"],
       "paint": {
         "circle-radius": [
@@ -310,7 +235,7 @@
     {
       "id": "shops_and_food_cluster_labels",
       "type": "symbol",
-      "source": "shops_and_food_points",
+      "source": "poi",
       "filter": ["has", "point_count"],
       "layout": {
         "text-field": "{point_count}",
