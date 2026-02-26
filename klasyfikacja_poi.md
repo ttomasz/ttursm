@@ -302,7 +302,18 @@ shop:
 - car_repair
 - tailor
 - shoe_repair
-
+- bookmaker
+- copyshop
+- dry_cleaning
+- locksmith
+- lottery
+- laundry
+- pet_grooming
+- repair
+- tool_hire
+- travel_agency
+- massage
+- tattoo
 ```
 
 ### Podkategorie
