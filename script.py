@@ -96,7 +96,16 @@ def get_parking_spaces(overpass_url: str) -> dict:
 
 
 @retry
-def get_shops_and_food(overpass_url: str) -> tuple[dict, dict]:
+def get_shops_and_food_outlines(overpass_url: str) -> dict:
+    response_outlines = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_SHOPS_AND_FOOD_OUTLINES}, timeout=HTTPX_TIMEOUT)
+    response_outlines.raise_for_status()
+    data_outlines = response_outlines.json()
+    geojson_outlines = osm2geojson.json2geojson(data=data_outlines, raise_on_failure=True, filter_used_refs=True)
+    return geojson_outlines
+
+
+@retry
+def get_shops_and_food_points(overpass_url: str) -> dict:
     response_points = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_SHOPS_AND_FOOD_POINTS}, timeout=HTTPX_TIMEOUT)
     response_points.raise_for_status()
     data_points = response_points.json()
@@ -104,12 +113,7 @@ def get_shops_and_food(overpass_url: str) -> tuple[dict, dict]:
     for feature in geojson_points["features"]:
         p = feature["properties"]
         flatten_properties(p)
-    time.sleep(1.0)
-    response_outlines = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_SHOPS_AND_FOOD_OUTLINES}, timeout=HTTPX_TIMEOUT)
-    response_outlines.raise_for_status()
-    data_outlines = response_outlines.json()
-    geojson_outlines = osm2geojson.json2geojson(data=data_outlines, raise_on_failure=True, filter_used_refs=True)
-    return geojson_points, geojson_outlines
+    return geojson_points
 
 
 def main() -> None:
@@ -131,18 +135,20 @@ def main() -> None:
             json.dump(obj=geojson_parking_spaces, fp=f)
     time.sleep(1.0)
     # ---
-    geojson_shops_and_food_points, geojson_shops_and_food_outlines = get_shops_and_food(overpass_url=OVERPASS_URL)
+    geojson_shops_and_food_points = get_shops_and_food_points(overpass_url=OVERPASS_URL)
     num_shops_and_food_points = len(geojson_shops_and_food_points["features"])
-    print(f"shops and food elements: {num_shops_and_food_points}")
+    print(f"shops and food point elements: {num_shops_and_food_points}")
     if num_shops_and_food_points > 0:
         with open("web/data/shops_and_food_points.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_shops_and_food_points, fp=f)
+    time.sleep(1.0)
+    # ---
+    geojson_shops_and_food_outlines = get_shops_and_food_outlines(overpass_url=OVERPASS_URL)
     num_shops_and_food_outlines = len(geojson_shops_and_food_outlines["features"])
     print(f"shops and food outline elements: {num_shops_and_food_outlines}")
     if num_shops_and_food_outlines > 0:
         with open("web/data/shops_and_food_polygons.geojson", "w", encoding="utf-8") as f:
             json.dump(obj=geojson_shops_and_food_outlines, fp=f)
-    time.sleep(1.0)
     # ---
     print("Done.")
 
