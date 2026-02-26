@@ -1,5 +1,5 @@
 {
-  "download_dt": "2026-02-26 18:49",
+  "download_dt": "2026-02-26 20:52",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
   "shops": 395,
@@ -13,8 +13,11 @@
     "sklepy_pozostale": 110,
     "mechanik": 10,
     "osiedlowy": 73,
+    "restauracja": 60,
     "market": 20,
     "piekarnia_cukiernia": 36,
+    "kawiarnia": 15,
+    "fastfood": 22,
     "monopolowy": 14,
     "apteka": 15,
     "dentysta": 15,
@@ -24,12 +27,14 @@
     "uslugi_pozostale": 33,
     "beauty": 55,
     "rzeznik": 9,
+    "lodziarnia": 9,
     "odziez_obuwie": 90,
     "drogeria": 10,
     "weterynarz": 6,
     "kwiaciarnia": 11,
     "optyk": 11,
     "krawiec_szewc": 8,
+    "pub": 2,
     "ch": 3
   }
 }

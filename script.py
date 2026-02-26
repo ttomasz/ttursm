@@ -93,6 +93,12 @@ SUBCATEGORY_TYPE = Literal[
     "weterynarz",
     "ch",
     "fryzjer",
+    "lodziarnia",
+    "restauracja",
+    "fastfood",
+    "kawiarnia",
+    "bar",
+    "pub",
     None,
 ]
 ICON_TYPE = Literal[
@@ -182,21 +188,27 @@ def classify(properties: dict) -> None:
             pass
         case "bar":
             category = "gastronomia"
+            subcategory = "bar"
             icon = "gastronomia-bar"
         case "cafe":
             category = "gastronomia"
+            subcategory = "kawiarnia"
             icon = "gastronomia-cafe"
         case "fast_food":
             category = "gastronomia"
+            subcategory = "fastfood"
             icon = "gastronomia-restaurant"
         case "ice_cream":
             category = "gastronomia"
+            subcategory = "lodziarnia"
             icon = "gastronomia-ice-cream"
         case "pub":
             category = "gastronomia"
+            subcategory = "pub"
             icon = "gastronomia-bar"
         case "restaurant":
             category = "gastronomia"
+            subcategory = "restauracja"
             icon = "gastronomia-restaurant"
         case "pharmacy":
             category = "medyczne"
