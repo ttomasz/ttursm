@@ -1,3 +1,58 @@
+function openingHoursReplace(s) {
+    return s
+        .replace('Mo', 'Pn')
+        .replace('Tu', 'Wt')
+        .replace('We', 'Śr')
+        .replace('Th', 'Czw')
+        .replace('Fr', 'Pt')
+        .replace('Sa', 'Sb')
+        .replace('Su', 'Nd')
+        .replace('PH off', 'w święta nieczynne')
+        .replace('PH on', 'w święta czynne')
+        .replace(',PH', ' i w święta')
+        .replace('PH', 'w święta')
+        .replace('"only after registration"', 'rezerwacje indywidualne')
+        .replaceAll(' off', ' nieczynne')
+        .replaceAll('"', '')
+    ;
+}
+
+function cuisineReplace(s) {
+    return s
+        .replaceAll(';', ' | ')
+        .replaceAll(',', ' | ')
+        .replace('asian', 'azjatycka')
+        .replace('bakery', 'wypieki')
+        .replace('barbecue', 'BBQ')
+        .replace('bubble_tea', 'bubble tea')
+        // .replace('burger', '')
+        .replace('cake', 'ciasta')
+        .replace('chicken', 'kurczak')
+        .replace('chinese', 'chińska')
+        .replace('coffee', 'kawa')
+        // .replace('coffee_shop', '')
+        .replace('georgian', 'gruzińska')
+        // .replace('grill', '')
+        .replace('ice_cream', 'lody')
+        .replace('indian', 'indyjska')
+        .replace('international', 'międzynarodowa')
+        .replace('italian', 'włoska')
+        .replace('japanese', 'japońska')
+        // .replace('kebab', '')
+        .replace('middle_eastern', 'bliskowschodnia')
+        // .replace('pasta', '')
+        // .replace('pizza', '')
+        .replace('polish', 'polska')
+        .replace('regional', 'regionalna')
+        .replace('salad', 'sałatki')
+        .replace('steak', 'steki')
+        // .replace('sushi', '')
+        .replace('thai', 'tajska')
+        .replace('turkish', 'turecka')
+        .replace('vietnamese', 'wietnamska')
+    ;
+}
+
 const map = new maplibregl.Map({
     container: "map",
     style: "https://ttomasz.github.io/ttursm/styles/map_style.json",
@@ -19,7 +74,7 @@ map.on('load', function () {
         const feature = e.features[0];
         const props = feature.properties;
         let html = '<div style="min-width:120px">';
-        html += '<strong>Parking</strong><br>';
+        html += '<strong style="font-size: 1.3em;">Parking</strong><br><br>';
         
         if (props.access) {
             const accessMap = {
@@ -74,11 +129,57 @@ map.on('load', function () {
         if (!e.features || !e.features.length) return;
         const feature = e.features[0];
         const props = feature.properties;
+        let emoji = [];
         let html = '<div style="min-width:120px">';
-        html += '<hr>';
-        for (const key in props) {
-            html += `<strong>${key}</strong>: ${props[key]}<br>`;
+        if (props['@label']) {
+            html += `<span class="popup-label kategoria-${props['@kategoria']}">${props['@label']}</span>`;
+        } else {
+            html += '<br>';
         }
+        html += '<hr>';
+        if (props.name) {
+            html += `<h3 class="popup-place-name">${props.name}</h3>`;
+        }
+        if (props.opening_hours) {
+            let oh = openingHoursReplace(props.opening_hours);
+            html += `<strong>Godziny otwarcia</strong>: ${oh}<br>`;
+        }
+        if (props.cuisine) {
+            let oh = cuisineReplace(props.cuisine);
+            html += `<strong>Kuchnia</strong>: ${oh}<br>`;
+        }
+        if (props.toilets) {
+            if (props.toilets === 'yes') {
+                html += '<strong>Toaleta</strong>: Tak<br>';
+                emoji.push("🚾");
+            } else if (props.toilets === 'no') {
+                html += '<strong>Toaleta</strong>: Nie<br>';
+            } else if (props.toilets === 'customers') {
+                html += '<strong>Toaleta</strong>: Dla klientów<br>';
+                emoji.push("🚾");
+            }
+        }
+        if (props.phone) {
+            html += `<strong>Telefon</strong>: ${props['phone']}<br>`;
+        }
+        if (props.deliveries === 'yes') {
+                html += '<strong>Dostawy</strong>: Tak<br>';
+            }
+        if (props.wheelchair === 'yes') {
+            emoji.push("♿️");
+        }
+        if (props.website) {
+            html += `<a href="${props['website']}" target="_blank">Strona WWW</a><br>`;
+        }
+        if (emoji) {
+            let icons = emoji.join([separator = ' | ']);
+            html += `${icons}<br>`;
+        }
+        // for (const key in props) {
+        //     html += `<strong>${key}</strong>: ${props[key]}<br>`;
+        // }
+        html += `<hr><a href="${props['@url']}" target="_blank">Link do obiektu w OSM</a>`;
+
         html += '</div>';
         new maplibregl.Popup()
             .setLngLat(e.lngLat)
