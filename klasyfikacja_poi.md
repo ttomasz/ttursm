@@ -441,7 +441,7 @@ Tagi OSM:
 shop:
 - beauty
 ```
-#### Mechanik
+#### Warsztat samochodowy
 Ikony:
 - ![Ikona](./web/maki-icons/svgs/usluga-car-repair.svg)
 

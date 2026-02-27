@@ -1,5 +1,5 @@
 {
-  "download_dt": "2026-02-26 20:52",
+  "download_dt": "2026-02-27 17:34",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
   "shops": 395,
@@ -11,7 +11,7 @@
   "uncategorized_ids": [],
   "poi_subcategories": {
     "sklepy_pozostale": 110,
-    "mechanik": 10,
+    "warsztat": 10,
     "osiedlowy": 73,
     "restauracja": 60,
     "market": 20,
