@@ -55,7 +55,7 @@ function cuisineReplace(s) {
 
 const map = new maplibregl.Map({
     container: "map",
-    style: "https://ttomasz.github.io/ttursm/styles/map_style.json",
+    style: "https://ttomasz.github.io/ttursm/styles/osm.json",
     dragRotate: false,
     hash: "map",
     maplibreLogo: true,
@@ -223,6 +223,28 @@ map.on('load', function () {
         map.getCanvas().style.cursor = '';
     });
 
+});
+
+function setStyleOsm() {
+    map.setStyle("https://ttomasz.github.io/ttursm/styles/osm.json", {diff: true});
+}
+
+function setStyleAerial() {
+    map.setStyle("https://ttomasz.github.io/ttursm/styles/aerial.json", {diff: true});
+}
+
+// --- init ---
+
+const radios = document.getElementsByName('map-style');
+radios.forEach(r => {
+    if (r.value === 'osm') r.checked = true;
+    else if (r.value === 'aerial') r.checked = false;
+    r.addEventListener('change', () => {
+        if (r.checked) {
+            if (r.value === 'osm') setStyleOsm();
+            else if (r.value === 'aerial') setStyleAerial();
+        }
+    });
 });
 
 // load summary

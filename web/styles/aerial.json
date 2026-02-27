@@ -1,0 +1,253 @@
+{
+  "version": 8,
+  "name": "Ursus",
+  "metadata": {},
+  "center": [20.8828989, 52.1960985],
+  "zoom": 15,
+  "sources": {
+    "parking": {
+      "type": "geojson",
+      "data": "https://ttomasz.github.io/ttursm/data/parking.geojson"
+    },
+    "parking_spaces": {
+      "type": "geojson",
+      "data": "https://ttomasz.github.io/ttursm/data/parking_spaces.geojson"
+    },
+    "poi": {
+      "type": "geojson",
+      "data": "https://ttomasz.github.io/ttursm/data/poi.geojson",
+      "cluster": true,
+      "clusterMinPoints": 3,
+      "clusterRadius": 30,
+      "attribution": "Dane OpenStreetMap"
+    },
+    "poi_outlines": {
+      "type": "geojson",
+      "data": "https://ttomasz.github.io/ttursm/data/poi_outlines.geojson"
+    },
+    "aerial": {
+      "type": "raster",
+      "tiles": ["https://temportofoto.openstreetmap.org.pl/titiler/tiles/WebMercatorQuad/{z}/{x}/{y}@1x.jpeg?url=file%3A%2F%2F%2Fmnt%2Ftemportofoto%2Fursus.jpeg.tif"],
+      "minzoom": 11,
+      "maxzoom": 20,
+      "scheme": "xyz",
+      "tileSize": 256
+    }
+  },
+  "sprite": "https://ttomasz.github.io/ttursm/sprites/maki",
+  "glyphs": "https://ttomasz.github.io/ttursm/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "aerial_basemap",
+      "type": "raster",
+      "source": "aerial",
+      "layout": {"visibility": "visible"}
+    },
+    {
+      "id": "parking_fill",
+      "type": "fill",
+      "source": "parking",
+      "minzoom": 10,
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-color": [
+          "match",
+          ["get", "access"],
+          "customers", "rgba(245, 131, 255, 0.7)",
+          "private", "rgba(64, 64, 64, 0.7)",
+          "rgba(20, 100, 200, 0.7)"
+        ],
+        "fill-outline-color": [
+          "match",
+          ["get", "access"],
+          "customers", "rgba(46, 0, 104, 1)",
+          "private", "rgba(0, 0, 0, 1)",
+          "rgba(0, 0, 250, 1)"
+        ]
+      }
+    },
+    {
+      "id": "parking_spaces_fill",
+      "type": "fill",
+      "source": "parking_spaces",
+      "minzoom": 16,
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-color": "rgba(0, 0, 0, 0)",
+        "fill-opacity": 1,
+        "fill-outline-color": "rgba(0, 0, 0, 1)"
+      }
+    },
+    {
+      "id": "shop_areas",
+      "type": "fill",
+      "source": "poi_outlines",
+      "minzoom": 15,
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-color": "rgba(0, 0, 0, 0)",
+        "fill-opacity": 1,
+        "fill-outline-color": "rgba(0, 0, 0, 1)"
+      }
+    },
+    {
+      "id": "parking_label_lz",
+      "type": "symbol",
+      "source": "parking",
+      "minzoom": 16,
+      "maxzoom": 18,
+      "layout": {
+        "icon-image": ["image", "parking"],
+        "text-font": ["Lato Bold"],
+        "text-offset": [0, 1],
+        "icon-offset": [
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          ["literal", [0, 0]],
+          ["literal", [0, -8]]
+        ],
+        "text-field": [
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          "",
+          [
+            "concat",
+            ["get", "capacity"],
+            [
+              "case",
+              ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
+              "",
+              ["concat", " | ", ["get", "capacity:disabled"]]
+            ]
+          ]
+        ],
+        "icon-size": ["step", ["zoom"], 0.7, 17, 1],
+        "text-size": 10,
+        "icon-allow-overlap": true,
+        "icon-overlap": "cooperative",
+        "symbol-z-order": "auto",
+        "text-allow-overlap": false,
+        "text-overlap": "never",
+        "text-ignore-placement": false,
+        "text-optional": true
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "parking_label",
+      "type": "symbol",
+      "source": "parking",
+      "minzoom": 18,
+      "layout": {
+        "icon-image": ["image", "parking"],
+        "text-font": ["Lato Bold"],
+        "text-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, 1]]],
+        "icon-offset": [
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          ["literal", [0, 0]],
+          ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
+          ["literal", [0, -8]],
+          ["literal", [0, -18]]
+        ],
+        "text-field": [
+          "case",
+          ["==", ["coalesce", ["get", "capacity"], ""], ""],
+          "",
+          [
+            "concat",
+            "Liczba miejsc: ",
+            ["get", "capacity"],
+            [
+              "case",
+              ["any", ["==", ["coalesce", ["get", "capacity:disabled"], ""], ""], ["==", ["coalesce", ["to-number", ["get", "capacity:disabled"]], 0], 0]],
+              "",
+              ["concat", "\n dla niepełnosprawnych: ", ["get", "capacity:disabled"]]
+            ]
+          ]
+        ],
+        "text-size": 11,
+        "icon-allow-overlap": true,
+        "icon-overlap": "cooperative",
+        "symbol-z-order": "auto",
+        "text-allow-overlap": false,
+        "text-overlap": "never",
+        "text-ignore-placement": false,
+        "text-optional": true,
+        "symbol-sort-key": ["coalesce", ["to-number", ["get", "capacity"]], 0]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "shops_and_food_symbols",
+      "type": "symbol",
+      "source": "poi",
+      "minzoom": 14,
+      "filter": ["!", ["has", "point_count"]],
+      "layout": {
+        "icon-size": ["step", ["zoom"], 1, 16, 1.1, 17, 1.2],
+        "icon-allow-overlap": true,
+        "icon-overlap": "always",
+        "symbol-z-order": "auto",
+        "icon-image": [
+          "coalesce",
+          ["image", ["get", "@ikonka"]],
+          ["image", "pusty-diamond"]
+        ],
+        "text-field": ["step", ["zoom"], "", 17, ["get", "name"]],
+        "text-font": ["Lato Bold"],
+        "text-size": 12,
+        "text-allow-overlap": false,
+        "text-overlap": "never",
+        "text-optional": true,
+        "text-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, 1]]],
+        "icon-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, -9]]]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "shops_and_food_clusters",
+      "type": "circle",
+      "source": "poi",
+      "filter": ["has", "point_count"],
+      "paint": {
+        "circle-radius": [
+            "step",
+            ["zoom"],
+            18,
+            15,
+            25,
+            16,
+            30
+        ],
+        "circle-color": "rgba(9, 90, 9, 0.90)"
+      }
+    },
+    {
+      "id": "shops_and_food_cluster_labels",
+      "type": "symbol",
+      "source": "poi",
+      "filter": ["has", "point_count"],
+      "layout": {
+        "text-field": "{point_count}",
+        "text-font": ["Lato Bold"],
+        "text-size": 14
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 2
+      }
+    }
+  ],
+  "id": "ttursmstyle",
+  "owner": "ttomasz"
+}
