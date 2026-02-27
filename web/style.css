@@ -51,3 +51,38 @@ body { margin: 0; padding: 0; font-family: lato; }
     margin-right: 8px;
     border-radius: 3px;
 }
+
+/* popup close button override – increase clickable area and icon size */
+.maplibregl-popup-close-button {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    line-height: 40px;
+    margin-top: 4px;
+    margin-right: 2px;
+}
+
+/* object type badge inside popups */
+.popup-label {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    /* text-transform: capitalize; */
+    /* default text colour; will be overridden if needed for contrast */
+    color: #fff;
+    margin-right: 40px;
+    margin-bottom: 4px;
+}
+
+.popup-place-name {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.kategoria-medyczne { background: #aa0a0a; }
+.kategoria-gastronomia { background: #964c06; }
+.kategoria-sklep { background: #0d4d07; }
+.kategoria-usluga { background: #790888; }
+.kategoria-pusty { background: #242424; }
