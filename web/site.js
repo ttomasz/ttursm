@@ -7,7 +7,7 @@ function openingHoursReplace(s) {
         .replace('Fr', 'Pt')
         .replace('Sa', 'Sb')
         .replace('Su', 'Nd')
-        .replace(',PH off', 'i w święta nieczynne')
+        .replace(',PH off', ' i w święta nieczynne')
         .replace('PH off', 'w święta nieczynne')
         .replace('PH on', 'w święta czynne')
         .replace(',PH', ' i w święta')
