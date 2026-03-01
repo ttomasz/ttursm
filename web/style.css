@@ -86,6 +86,21 @@ body { margin: 0; padding: 0; font-family: lato; }
     margin-right: 8px;
     vertical-align: middle;
 }
+.legend img.icons-poi {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+.legend div.icons-poi {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.legend input {
+    vertical-align: middle;
+}
 
 /* popup close button override – increase clickable area and icon size */
 .maplibregl-popup-close-button {
