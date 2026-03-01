@@ -2,5 +2,5 @@
 
 set -e
 
-~/Downloads/spreet --ratio 2 ./web/maki-icons/svgs/ ./web/sprites/maki
-~/Downloads/spreet --ratio 4 ./web/maki-icons/svgs/ ./web/sprites/maki@2x
+~/Downloads/spreet --ratio 2 ./web/maki-icons/svgs/ ./web/sprites/ttursm-maki
+~/Downloads/spreet --ratio 4 ./web/maki-icons/svgs/ ./web/sprites/ttursm-maki@2x

@@ -6,6 +6,7 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <script src="https://unpkg.com/maplibre-gl@5.19.0/dist/maplibre-gl.js"></script>
   <link href="https://unpkg.com/maplibre-gl@5.19.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/pmtiles@4.4.0/dist/pmtiles.js"></script>
   <link href="https://ttomasz.github.io/ttursm/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -84,7 +85,12 @@
     <div>
       <h4>Styl mapy:</h4>
       <div id="style-controls">
-        <label><input type="radio" name="map-style" value="osm" checked> OpenStreetMap</label><br>
+        <label><input type="radio" name="map-style" value="protomaps-black"> Protomaps-Black</label><br>
+        <label><input type="radio" name="map-style" value="protomaps-dark"> Protomaps-Dark</label><br>
+        <label><input type="radio" name="map-style" value="protomaps-grayscale"> Protomaps-Grayscale</label><br>
+        <label><input type="radio" name="map-style" value="protomaps-light"> Protomaps-Light</label><br>
+        <label><input type="radio" name="map-style" value="protomaps-white"> Protomaps-White</label><br>
+        <label><input type="radio" name="map-style" value="osm" checked> OpenStreetMap Carto</label><br>
         <label><input type="radio" name="map-style" value="aerial"> Zdjęcia lotnicze</label>
       </div>
     </div>

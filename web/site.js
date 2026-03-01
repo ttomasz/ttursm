@@ -7,6 +7,7 @@ function openingHoursReplace(s) {
         .replace('Fr', 'Pt')
         .replace('Sa', 'Sb')
         .replace('Su', 'Nd')
+        .replace(',PH off', 'i w święta nieczynne')
         .replace('PH off', 'w święta nieczynne')
         .replace('PH on', 'w święta czynne')
         .replace(',PH', ' i w święta')
@@ -53,6 +54,8 @@ function cuisineReplace(s) {
     ;
 }
 
+let protocol = new pmtiles.Protocol();
+maplibregl.addProtocol("pmtiles", protocol.tile);
 const map = new maplibregl.Map({
     container: "map",
     style: "https://ttomasz.github.io/ttursm/styles/osm.json",
@@ -225,24 +228,14 @@ map.on('load', function () {
 
 });
 
-function setStyleOsm() {
-    map.setStyle("https://ttomasz.github.io/ttursm/styles/osm.json", {diff: true});
-}
-
-function setStyleAerial() {
-    map.setStyle("https://ttomasz.github.io/ttursm/styles/aerial.json", {diff: true});
-}
-
 // --- init ---
 
 const radios = document.getElementsByName('map-style');
 radios.forEach(r => {
-    if (r.value === 'osm') r.checked = true;
-    else if (r.value === 'aerial') r.checked = false;
+    if (r.checked) map.setStyle(`https://ttomasz.github.io/ttursm/styles/${r.value}.json`, {diff: true});
     r.addEventListener('change', () => {
         if (r.checked) {
-            if (r.value === 'osm') setStyleOsm();
-            else if (r.value === 'aerial') setStyleAerial();
+            map.setStyle(`https://ttomasz.github.io/ttursm/styles/${r.value}.json`, {diff: true});
         }
     });
 });

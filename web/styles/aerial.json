@@ -34,7 +34,7 @@
       "tileSize": 256
     }
   },
-  "sprite": "https://ttomasz.github.io/ttursm/sprites/maki",
+  "sprite": [{"id": "ttursm", "url": "https://ttomasz.github.io/ttursm/sprites/ttursm-maki"}],
   "glyphs": "https://ttomasz.github.io/ttursm/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
@@ -97,7 +97,7 @@
       "minzoom": 16,
       "maxzoom": 18,
       "layout": {
-        "icon-image": ["image", "parking"],
+        "icon-image": ["image", "ttursm:parking"],
         "text-font": ["Lato Bold"],
         "text-offset": [0, 1],
         "icon-offset": [
@@ -142,7 +142,7 @@
       "source": "parking",
       "minzoom": 18,
       "layout": {
-        "icon-image": ["image", "parking"],
+        "icon-image": ["image", "ttursm:parking"],
         "text-font": ["Lato Bold"],
         "text-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, 1]]],
         "icon-offset": [
@@ -197,8 +197,8 @@
         "symbol-z-order": "auto",
         "icon-image": [
           "coalesce",
-          ["image", ["get", "@ikonka"]],
-          ["image", "pusty-diamond"]
+          ["image", ["concat", "ttursm:", ["get", "@ikonka"]]],
+          ["image", "ttursm:pusty-diamond"]
         ],
         "text-field": ["step", ["zoom"], "", 17, ["get", "name"]],
         "text-font": ["Lato Bold"],
