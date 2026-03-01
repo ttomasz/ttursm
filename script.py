@@ -18,6 +18,7 @@ from typing import Literal, TypedDict, cast, DefaultDict
 import httpx
 from retryhttp import retry
 import osm2geojson
+import tenacity
 
 
 HTTPX_TIMEOUT = httpx.Timeout(90.0)
@@ -518,7 +519,10 @@ def prepare_summary(geojson_poi: dict, download_dt: datetime) -> Summary:
     return result
 
 
-@retry
+@retry(
+    wait=tenacity.wait_random_exponential(multiplier=3, max=180),
+    max_attempt_number=10
+)
 def get_parking(overpass_url: str) -> dict:
     response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING}, timeout=HTTPX_TIMEOUT)
     response.raise_for_status()
@@ -530,7 +534,10 @@ def get_parking(overpass_url: str) -> dict:
     return geojson
 
 
-@retry
+@retry(
+    wait=tenacity.wait_random_exponential(multiplier=3, max=180),
+    max_attempt_number=10
+)
 def get_parking_spaces(overpass_url: str) -> dict:
     response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING_SPACES}, timeout=HTTPX_TIMEOUT)
     response.raise_for_status()
@@ -539,7 +546,10 @@ def get_parking_spaces(overpass_url: str) -> dict:
     return geojson
 
 
-@retry
+@retry(
+    wait=tenacity.wait_random_exponential(multiplier=3, max=180),
+    max_attempt_number=10
+)
 def get_poi_outlines(overpass_url: str) -> dict:
     response_outlines = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_POI_OUT_LINES}, timeout=HTTPX_TIMEOUT)
     response_outlines.raise_for_status()
@@ -548,7 +558,10 @@ def get_poi_outlines(overpass_url: str) -> dict:
     return geojson_outlines
 
 
-@retry
+@retry(
+    wait=tenacity.wait_random_exponential(multiplier=3, max=180),
+    max_attempt_number=10
+)
 def get_poi(overpass_url: str) -> dict:
     response_points = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_POI}, timeout=HTTPX_TIMEOUT)
     response_points.raise_for_status()
