@@ -228,7 +228,36 @@ map.on('load', function () {
 
 });
 
+// maintain the loaded POI data separately from the fetch promise
+let poiData = null;
+
+function disableAllCategories() {
+    document.querySelectorAll('.legend input[type=checkbox]').forEach(cb => {
+        cb.disabled = true;
+    });
+}
+
+function enableAllCategories() {
+    document.querySelectorAll('.legend input[type=checkbox]').forEach(cb => {
+        cb.disabled = false;
+    });
+}
+
 // --- init ---
+// prevent interaction until the source data is available
+disableAllCategories();
+let poiPromise = fetch("https://ttomasz.github.io/ttursm/data/poi.geojson")
+    .then(response => response.json())
+    .then(data => {
+        poiData = data;
+        enableAllCategories();
+        applyPoiFilter();
+        return data;
+    })
+    .catch(err => {
+        console.error("Error loading POI data:", err);
+    });
+
 
 const radios = document.getElementsByName('map-style');
 radios.forEach(r => {
@@ -238,6 +267,14 @@ radios.forEach(r => {
             map.setStyle(`https://ttomasz.github.io/ttursm/styles/${r.value}.json`, {diff: true});
         }
     });
+});
+
+// whenever the style is (re)loaded we need to reapply the filter/source data
+map.on('styledata', e => {
+    // the event fires multiple times; only act when the style itself is updated
+    if (e.dataType === 'style' && poiData) {
+        applyPoiFilter();
+    }
 });
 
 // load summary
@@ -261,3 +298,104 @@ fetch("https://ttomasz.github.io/ttursm/data/summary.json")
         console.error("Error loading summary data:", error);
         document.getElementById("data-date").textContent = "Błąd ładowania danych";
     });
+
+// helper that collects current checkbox selections
+function computeSelections() {
+    const checkedCategories = [];
+    const checkedSubcategories = [];
+    // iterate over category checkboxes first
+    document.querySelectorAll('input[type=checkbox][category]').forEach(cb => {
+        const cat = cb.getAttribute('category');
+        if (cb.checked) {
+            checkedCategories.push(cat);
+        }
+        // no need to modify children here; they are disabled elsewhere
+    });
+
+    // now gather subcategories that are still checked and whose category is also checked
+    document.querySelectorAll('input[type=checkbox][subcategory]').forEach(sc => {
+        if (!sc.checked) return;
+        const sub = sc.getAttribute('subcategory');
+        const details = sc.closest('details');
+        if (details) {
+            const parentCb = details.querySelector('summary>input[type=checkbox][category]');
+            if (parentCb && !parentCb.checked) return; // skip if parent category is off
+        }
+        checkedSubcategories.push(sub);
+    });
+
+    return {checkedCategories, checkedSubcategories};
+}
+
+// helper that builds a filter expression for use with map.setFilter
+function buildPoiFilter(categories, subcategories) {
+    // always start with non-clustered features
+    const filter = ["all", ["!", ["has", "point_count"]]];
+    if ((!categories || categories.length == 0) && (!subcategories || subcategories == 0)) {
+        filter.push(false);
+        return filter;
+    }
+    if (categories && categories.length > 0) {
+        filter.push(["in", ["get", "@kategoria"], ["literal", categories]]);
+    }
+    if (subcategories && subcategories.length > 0) {
+        filter.push(["in", ["get", "@podkategoria"], ["literal", subcategories]]);
+    }
+    return filter;
+}
+
+function applyPoiFilter() {
+    if (!poiData) return; // still loading
+
+    console.log("Updating POI layer...");
+    let {checkedCategories, checkedSubcategories} = computeSelections();
+    console.log("Computed categories:", checkedCategories, checkedSubcategories);
+
+    // build a filtered feature collection rather than modify original
+    let filteredData = {
+        "type": "FeatureCollection",
+        "features": poiData.features.filter(feature => {
+            const cat = feature.properties["@kategoria"];
+            const sub = feature.properties["@podkategoria"];
+
+            // nothing selected => hide everything
+            if ((!checkedCategories || checkedCategories.length === 0) &&
+                (!checkedSubcategories || checkedSubcategories.length === 0)) {
+                return false;
+            }
+
+            // if any subcategories are explicitly checked, use them and ignore
+            // the parent category. this allows deselecting a subcategory while
+            // keeping the category itself enabled.
+            if (checkedSubcategories && checkedSubcategories.length > 0) {
+                return checkedSubcategories.includes(sub);
+            }
+
+            // otherwise fall back to category filtering
+            if (checkedCategories && checkedCategories.length > 0) {
+                return checkedCategories.includes(cat);
+            }
+
+            return false;
+        })
+    };
+    map.getSource("poi").setData(filteredData);
+}
+
+const legendChecks = document.querySelectorAll('.legend input[type=checkbox]');
+legendChecks.forEach(cb => {
+    cb.addEventListener('change', () => {
+        // if a category has been toggled, disable/enable its subitems accordingly
+        if (cb.hasAttribute('category')) {
+            const details = cb.closest('details');
+            if (details) {
+                details.querySelectorAll('input[type=checkbox][subcategory]').forEach(sc => {
+                    sc.disabled = !cb.checked;
+                    // keep checked state intact even when disabled
+                    // (computeSelections ignores them when parent off)
+                });
+            }
+        }
+        applyPoiFilter();
+    });
+});
