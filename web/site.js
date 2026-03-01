@@ -226,6 +226,45 @@ map.on('load', function () {
         map.getCanvas().style.cursor = '';
     });
 
+    map.on('mouseenter', 'zlikwidowane_symbols', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'zlikwidowane_symbols', function () {
+        map.getCanvas().style.cursor = '';
+    });
+
+    map.getSource("zamkniete").getData().then(data => {
+        document.getElementById("count-closed").textContent = `(${data.features.length})`;
+    });
+
+    // click feature to get popup with info
+    map.on('click', 'zlikwidowane_symbols', function (e) {
+        if (!e.features || !e.features.length) return;
+        const feature = e.features[0];
+        const props = feature.properties;
+        let html = '<div style="min-width:120px">';
+        html += '<strong>Zlikwidowany</strong><br><br>';
+        
+        if (props.name) {
+            html += `<strong>Nazwa</strong>: ${props.name}<br>`;
+        } else {
+            html += '<strong>Nazwa</strong>: <i>brak</i><br>';
+        }
+        
+        if (props.description) {
+            html += `<strong>Opis</strong>: ${props.description}<br>`;
+        } else {
+            html += `<strong>Opis</strong>: <i>brak</i><br>`;
+        }
+
+        html += '</div>';
+        new maplibregl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(html)
+            .addTo(map);
+    });
+
+    updateZlikwidowaneVisibility();
 });
 
 // maintain the loaded POI data separately from the fetch promise
@@ -274,6 +313,7 @@ map.on('styledata', e => {
     // the event fires multiple times; only act when the style itself is updated
     if (e.dataType === 'style' && poiData) {
         applyPoiFilter();
+        updateZlikwidowaneVisibility();
     }
 });
 
@@ -303,8 +343,9 @@ fetch("https://ttomasz.github.io/ttursm/data/summary.json")
 function computeSelections() {
     const checkedCategories = [];
     const checkedSubcategories = [];
-    // iterate over category checkboxes first
+    // iterate over category checkboxes first, but ignore the "zlikwidowane" control
     document.querySelectorAll('input[type=checkbox][category]').forEach(cb => {
+        if (cb.id === 'checkbox-zlikwidowane') return; // skip removed checkbox
         const cat = cb.getAttribute('category');
         if (cb.checked) {
             checkedCategories.push(cat);
@@ -342,6 +383,15 @@ function buildPoiFilter(categories, subcategories) {
         filter.push(["in", ["get", "@podkategoria"], ["literal", subcategories]]);
     }
     return filter;
+}
+
+// updates visibility of the layer showing closed/removed places
+function updateZlikwidowaneVisibility() {
+    const cb = document.getElementById('checkbox-zlikwidowane');
+    const vis = (cb && cb.checked) ? 'visible' : 'none';
+    if (map.getLayer('zlikwidowane_symbols')) {
+        map.setLayoutProperty('zlikwidowane_symbols', 'visibility', vis);
+    }
 }
 
 function applyPoiFilter() {
@@ -382,7 +432,8 @@ function applyPoiFilter() {
     map.getSource("poi").setData(filteredData);
 }
 
-const legendChecks = document.querySelectorAll('.legend input[type=checkbox]');
+// gather all legend checkboxes except the one we hide
+const legendChecks = Array.from(document.querySelectorAll('.legend input[type=checkbox]')).filter(cb => cb.id !== 'checkbox-zlikwidowane');
 legendChecks.forEach(cb => {
     cb.addEventListener('change', () => {
         // if a category has been toggled, disable/enable its subitems accordingly
@@ -399,3 +450,9 @@ legendChecks.forEach(cb => {
         applyPoiFilter();
     });
 });
+
+// listen directly to the hidden/disabled zlikwidowane checkbox for layer toggling
+const zlikwCb = document.getElementById('checkbox-zlikwidowane');
+if (zlikwCb) {
+    zlikwCb.addEventListener('change', updateZlikwidowaneVisibility);
+}

@@ -327,5 +327,12 @@
     "width": 92,
     "x": 736,
     "y": 184
+  },
+  "zlikwidowany-cross": {
+    "height": 92,
+    "pixelRatio": 4,
+    "width": 92,
+    "x": 828,
+    "y": 184
   }
 }

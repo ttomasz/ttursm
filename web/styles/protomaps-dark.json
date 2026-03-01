@@ -24,6 +24,10 @@
         "poi_outlines": {
         "type": "geojson",
         "data": "https://ttomasz.github.io/ttursm/data/poi_outlines.geojson"
+        },
+        "zamkniete": {
+        "type": "geojson",
+        "data": "https://ttomasz.github.io/ttursm/data/zamkniete.geojson"
         }
     },
     "layers": [
@@ -12259,6 +12263,33 @@
             "text-halo-width": 1
         }
         },
+    {
+      "id": "zlikwidowane_symbols",
+      "type": "symbol",
+      "source": "zamkniete",
+      "minzoom": 12,
+      "filter": ["!", ["has", "point_count"]],
+      "layout": {
+        "visibility": "none",
+        "icon-size": ["step", ["zoom"], 1, 16, 1.1, 17, 1.2],
+        "icon-allow-overlap": true,
+        "icon-overlap": "always",
+        "symbol-z-order": "auto",
+        "icon-image": ["image", "ttursm:zlikwidowany-cross"],
+        "text-field": ["step", ["zoom"], "", 17, ["get", "name"]],
+        "text-font": ["Lato Bold"],
+        "text-size": 12,
+        "text-allow-overlap": false,
+        "text-overlap": "never",
+        "text-optional": true,
+        "text-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, 1]]],
+        "icon-offset": ["step", ["zoom"], ["literal", [0, 0]], 17, ["literal", [0, -9]]]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 1
+      }
+    },
         {
         "id": "shops_and_food_clusters",
         "type": "circle",

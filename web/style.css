@@ -76,6 +76,13 @@ body { margin: 0; padding: 0; font-family: lato; }
     border-radius: 3px;
     vertical-align: middle;
 }
+.legend img.icon-poi {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
 
 /* popup close button override – increase clickable area and icon size */
 .maplibregl-popup-close-button {
@@ -111,3 +118,4 @@ body { margin: 0; padding: 0; font-family: lato; }
 .kategoria-sklep { background: #0d4d07; }
 .kategoria-usluga { background: #790888; }
 .kategoria-pusty { background: #242424; }
+.kategoria-zlikwidowany { background: #242424; }
