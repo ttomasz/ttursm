@@ -368,23 +368,6 @@ function computeSelections() {
     return {checkedCategories, checkedSubcategories};
 }
 
-// helper that builds a filter expression for use with map.setFilter
-function buildPoiFilter(categories, subcategories) {
-    // always start with non-clustered features
-    const filter = ["all", ["!", ["has", "point_count"]]];
-    if ((!categories || categories.length == 0) && (!subcategories || subcategories == 0)) {
-        filter.push(false);
-        return filter;
-    }
-    if (categories && categories.length > 0) {
-        filter.push(["in", ["get", "@kategoria"], ["literal", categories]]);
-    }
-    if (subcategories && subcategories.length > 0) {
-        filter.push(["in", ["get", "@podkategoria"], ["literal", subcategories]]);
-    }
-    return filter;
-}
-
 // updates visibility of the layer showing closed/removed places
 function updateZlikwidowaneVisibility() {
     const cb = document.getElementById('checkbox-zlikwidowane');
@@ -413,6 +396,8 @@ function applyPoiFilter() {
                 (!checkedSubcategories || checkedSubcategories.length === 0)) {
                 return false;
             }
+
+            if (cat === "pusty" && checkedCategories && checkedCategories.includes("pusty")) return true; 
 
             // if any subcategories are explicitly checked, use them and ignore
             // the parent category. this allows deselecting a subcategory while
