@@ -189,7 +189,7 @@
       }
     },
     {
-      "id": "shops_and_food_symbols",
+      "id": "poi_symbols",
       "type": "symbol",
       "source": "poi",
       "minzoom": 12,
@@ -246,7 +246,7 @@
       }
     },
     {
-      "id": "shops_and_food_clusters",
+      "id": "poi_clusters",
       "type": "circle",
       "source": "poi",
       "filter": ["has", "point_count"],
@@ -264,7 +264,7 @@
       }
     },
     {
-      "id": "shops_and_food_cluster_labels",
+      "id": "poi_cluster_labels",
       "type": "symbol",
       "source": "poi",
       "filter": ["has", "point_count"],

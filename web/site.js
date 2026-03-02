@@ -177,7 +177,7 @@ map.on('load', function () {
             .setHTML(html)
             .addTo(map);
     });
-    map.on('click', 'shops_and_food_symbols', function (e) {
+    map.on('click', 'poi_symbols', function (e) {
         if (!e.features || !e.features.length) return;
         const feature = e.features[0];
         const props = feature.properties;
@@ -245,12 +245,12 @@ map.on('load', function () {
     });
 
     // zoom when clicking cluster
-    map.on('click', 'shops_and_food_clusters', function (e) {
+    map.on('click', 'poi_clusters', function (e) {
         let features = map.queryRenderedFeatures(e.point, {
-            layers: ['shops_and_food_clusters']
+            layers: ['poi_clusters']
         });
         map
-            .getSource('shops_and_food_points')
+            .getSource('poi')
             .getClusterExpansionZoom(features[0].properties.cluster_id)
             .then(zoom => {
                 map.easeTo({
@@ -261,10 +261,10 @@ map.on('load', function () {
     });
 
     // Change cursor to pointer when hovering over object
-    map.on('mouseenter', 'shops_and_food_symbols', function () {
+    map.on('mouseenter', 'poi_symbols', function () {
         map.getCanvas().style.cursor = 'pointer';
     });
-    map.on('mouseleave', 'shops_and_food_symbols', function () {
+    map.on('mouseleave', 'poi_symbols', function () {
         map.getCanvas().style.cursor = '';
     });
     map.on('mouseenter', 'parking_fill', function () {
@@ -273,10 +273,10 @@ map.on('load', function () {
     map.on('mouseleave', 'parking_fill', function () {
         map.getCanvas().style.cursor = '';
     });
-    map.on('mouseenter', 'shops_and_food_clusters', function () {
+    map.on('mouseenter', 'poi_clusters', function () {
         map.getCanvas().style.cursor = 'pointer';
     });
-    map.on('mouseleave', 'shops_and_food_clusters', function () {
+    map.on('mouseleave', 'poi_clusters', function () {
         map.getCanvas().style.cursor = '';
     });
 
