@@ -54,6 +54,55 @@ function cuisineReplace(s) {
     ;
 }
 
+function insertLogoImg(elementId, wikidataBrandId) {
+    fetch("https://www.wikidata.org/wiki/Special:EntityData?" + new URLSearchParams({
+        id: wikidataBrandId,
+        format: "json",
+    }).toString())
+    .then(response => response.json())
+    .then(data => {
+        let elements = data?.entities[wikidataBrandId];
+        if (!elements) return;
+        let logos = elements?.claims?.P154;
+        if (!logos) return;
+        let logo = logos[0]?.mainsnak;
+        if (logo && logo.datatype == "commonsMedia") {
+            return logo?.datavalue?.value;
+        }
+    })
+    .then(fileName => {
+        if (fileName) {
+            return fetch("https://commons.wikimedia.org/w/api.php?" + new URLSearchParams({
+                id: wikidataBrandId,
+                format: "json",
+                origin: "*",
+                action: "query",
+                prop: "imageinfo",
+                iiprop: "url",
+                titles: "File:"+fileName,
+            }).toString())
+            .then(response => response.json())
+            .then(data => {
+                let pages = data?.query?.pages;
+                if (pages) {
+                    let k = Object.keys(pages);
+                    if (k) {
+                        return pages[k[0]]?.imageinfo[0]?.url;
+                    }
+                }
+            });
+        }
+    })
+    .then(url => {
+        if (url) {
+            let el = document.getElementById(elementId);
+            if (el) {
+                el.innerHTML = `<img src="${url}" class="popup-logo"></img>`;
+            }
+        }
+    })
+}
+
 let protocol = new pmtiles.Protocol();
 maplibregl.addProtocol("pmtiles", protocol.tile);
 const map = new maplibregl.Map({
@@ -132,6 +181,7 @@ map.on('load', function () {
         if (!e.features || !e.features.length) return;
         const feature = e.features[0];
         const props = feature.properties;
+        let brandId = props["brand:wikidata"];
         let emoji = [];
         let html = '<div style="min-width:120px">';
         if (props['@label']) {
@@ -140,6 +190,9 @@ map.on('load', function () {
             html += '<br>';
         }
         html += '<hr>';
+        if (brandId) {
+            html += '<div id="brand-logo"></div>';
+        }
         if (props.name) {
             html += `<h3 class="popup-place-name">${props.name}</h3>`;
         }
@@ -188,6 +241,7 @@ map.on('load', function () {
             .setLngLat(e.lngLat)
             .setHTML(html)
             .addTo(map);
+        if (brandId) insertLogoImg("brand-logo", brandId);
     });
 
     // zoom when clicking cluster

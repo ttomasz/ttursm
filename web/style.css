@@ -102,6 +102,13 @@ body { margin: 0; padding: 0; font-family: lato; }
     vertical-align: middle;
 }
 
+.popup-logo {
+    max-width: 60px;
+    max-height: 40px;
+    float: right;
+    margin: 4px 0 4px 8px; /* push away from text */
+}
+
 /* popup close button override – increase clickable area and icon size */
 .maplibregl-popup-close-button {
     width: 40px;
