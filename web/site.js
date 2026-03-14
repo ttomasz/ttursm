@@ -1,3 +1,9 @@
+// collapse legend on narrow screens so the map is visible
+if (window.innerWidth <= 480) {
+    const legendDetails = document.querySelector('.legend > details');
+    if (legendDetails) legendDetails.removeAttribute('open');
+}
+
 function openingHoursReplace(s) {
     return s
         .replace('Mo', 'Pn')

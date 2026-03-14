@@ -1,12 +1,14 @@
 @font-face {
     font-family: "lato";
     src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Regular.woff2") format('woff2');
+    font-display: swap;
 }
 
 @font-face {
     font-family: "lato";
     src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Bold.woff2") format('woff2');
     font-weight: bold;
+    font-display: swap;
 }
 
 @font-face {
@@ -14,14 +16,17 @@
     src: url("https://ttomasz.github.io/ttursm/fonts/Lato-BoldItalic.woff2") format('woff2');
     font-weight: bold;
     font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "lato";
     src: url("https://ttomasz.github.io/ttursm/fonts/Lato-Italic.woff2") format('woff2');
     font-style: italic;
+    font-display: swap;
 }
 
+*, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; padding: 0; font-family: lato; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
 
@@ -33,15 +38,17 @@ body { margin: 0; padding: 0; font-family: lato; }
     padding: 8px 10px;
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #111;
-    line-height: 20px;
+    line-height: 1.4;
+    min-width: 120px;
     max-width: 260px;
     /* keep legend from growing taller than viewport, allow scrolling */
     max-height: calc(100vh - 24px);
     overflow-y: auto;
+    overscroll-behavior: contain;
 }
-.legend h4 { margin: 0 0 6px 0; font-size: 16px; }
+.legend h4 { margin: 0 0 6px 0; font-size: 1rem; }
 .legend ul { list-style: none; margin: 0; padding: 0; }
 .legend ul ul { padding-left: 20px; margin-top: 2px; }
 .legend ul ul li { display: list-item; }
@@ -109,8 +116,13 @@ body { margin: 0; padding: 0; font-family: lato; }
     margin-right: 6px;
     vertical-align: middle;
 }
-.legend input {
+.legend input[type="checkbox"],
+.legend input[type="radio"] {
     vertical-align: middle;
+    width: 1.2em;
+    height: 1.2em;
+    margin: 0.3em 0.3em 0.3em 0;
+    cursor: pointer;
 }
 
 .popup-logo {
@@ -135,7 +147,7 @@ body { margin: 0; padding: 0; font-family: lato; }
     display: inline-block;
     padding: 2px 6px;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: bold;
     /* text-transform: capitalize; */
     /* default text colour; will be overridden if needed for contrast */
@@ -155,3 +167,20 @@ body { margin: 0; padding: 0; font-family: lato; }
 .kategoria-usluga { background: #790888; }
 .kategoria-pusty { background: #242424; }
 .kategoria-zlikwidowany { background: #242424; }
+
+/* mobile: legend takes full width, reduced padding */
+@media (max-width: 480px) {
+    .legend {
+        left: 8px;
+        right: 56px;
+        top: 8px;
+        max-width: none;
+        font-size: 0.8125rem;
+        padding: 6px 8px;
+        max-height: calc(100vh - 16px);
+    }
+    /* start legend collapsed on mobile */
+    .legend > details {
+        /* JS will remove the open attribute on load for narrow screens */
+    }
+}
