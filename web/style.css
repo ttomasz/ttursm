@@ -48,6 +48,7 @@ body { margin: 0; padding: 0; font-family: lato; }
     overflow-y: auto;
     overscroll-behavior: contain;
 }
+.legend-title { font-weight: bold; font-size: 1rem; }
 .legend h4 { margin: 0 0 6px 0; font-size: 1rem; }
 .legend ul { list-style: none; margin: 0; padding: 0; }
 .legend ul ul { padding-left: 20px; margin-top: 2px; }
@@ -64,6 +65,16 @@ body { margin: 0; padding: 0; font-family: lato; }
 }
 .legend summary::-webkit-details-marker { display: none; }
 
+/* add custom arrow indicator */
+.legend summary::after {
+    content: "➕";
+    display: inline-block;
+    margin-left: 0.7em;
+}
+.legend details[open] > summary::after {
+    content: "➖";
+}
+
 /* legend-level toggle: move the fold icon to the right */
 .legend > details > summary {
     display: flex;
@@ -73,20 +84,6 @@ body { margin: 0; padding: 0; font-family: lato; }
 }
 .legend > details > summary::after {
     margin-left: auto;
-}
-
-/* add custom arrow indicator on right */
-.legend summary::after {
-    content: "➕"; /* "▶"; */
-    display: inline-block;
-    /* width: 1em; */
-    margin-left: 0.7em;
-    transition: transform 0.2s ease;
-    /* transform: rotate(90deg); */
-}
-.legend details[open] > summary::after {
-    /* transform: rotate(-90deg); */
-    content: "➖";
 }
 .legend span.swatch,
 .legend span.swatch-poi {
@@ -178,9 +175,5 @@ body { margin: 0; padding: 0; font-family: lato; }
         font-size: 0.8125rem;
         padding: 6px 8px;
         max-height: calc(100vh - 16px);
-    }
-    /* start legend collapsed on mobile */
-    .legend > details {
-        /* JS will remove the open attribute on load for narrow screens */
     }
 }

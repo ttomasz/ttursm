@@ -11,9 +11,9 @@
 </head>
 <body>
   <div id="map"></div>
-  <div class="legend" aria-hidden="false">
+  <div class="legend">
     <details open>
-    <summary><h4>Legenda:</h4></summary>
+    <summary><span class="legend-title">Legenda:</span></summary>
     <div>
       <h4>Miejsca parkingowe naziemne:</h4>
       <ul>
@@ -28,61 +28,61 @@
       <ul>
         <li>
           <details>
-            <summary><input type="checkbox" checked category="medyczne"><span class="swatch-poi kategoria-medyczne"></span>Medyczne &nbsp;<span id="count-med"></span></summary>
+            <summary><input type="checkbox" checked data-category="medyczne"><span class="swatch-poi kategoria-medyczne"></span>Medyczne &nbsp;<span id="count-med"></span></summary>
             <ul>
-              <li><input type="checkbox" checked subcategory="optyk"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-optician.svg" class="icon-poi"></img>Optyk &nbsp;<span id="subcount-optyk"></span></li>
-              <li><input type="checkbox" checked subcategory="dentysta"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-dentist.svg" class="icon-poi"></img>Dentysta &nbsp;<span id="subcount-dentysta"></span></li>
-              <li><input type="checkbox" checked subcategory="weterynarz"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-veterinary.svg" class="icon-poi"></img>Weterynarz &nbsp;<span id="subcount-weterynarz"></span></li>
-              <li><input type="checkbox" checked subcategory="apteka"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-pharmacy.svg" class="icon-poi"></img>Apteka &nbsp;<span id="subcount-apteka"></span></li>
+              <li><input type="checkbox" checked data-subcategory="optyk"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-optician.svg" class="icon-poi"/>Optyk &nbsp;<span id="subcount-optyk"></span></li>
+              <li><input type="checkbox" checked data-subcategory="dentysta"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-dentist.svg" class="icon-poi"/>Dentysta &nbsp;<span id="subcount-dentysta"></span></li>
+              <li><input type="checkbox" checked data-subcategory="weterynarz"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-veterinary.svg" class="icon-poi"/>Weterynarz &nbsp;<span id="subcount-weterynarz"></span></li>
+              <li><input type="checkbox" checked data-subcategory="apteka"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/medyczne-pharmacy.svg" class="icon-poi"/>Apteka &nbsp;<span id="subcount-apteka"></span></li>
             </ul>
           </details>
         </li>
         <li>
           <details>
-            <summary><input type="checkbox" checked category="gastronomia"><span class="swatch-poi kategoria-gastronomia"></span>Gastronomia &nbsp;<span id="count-food"></span></summary>
+            <summary><input type="checkbox" checked data-category="gastronomia"><span class="swatch-poi kategoria-gastronomia"></span>Gastronomia &nbsp;<span id="count-food"></span></summary>
             <ul>
-              <li><input type="checkbox" checked subcategory="lodziarnia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-ice-cream.svg" class="icon-poi"></img>Lodziarnia &nbsp;<span id="subcount-lodziarnia"></span></li>
-              <li><input type="checkbox" checked subcategory="restauracja"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-restaurant.svg" class="icon-poi"></img>Restauracja &nbsp;<span id="subcount-restauracja"></span></li>
-              <li><input type="checkbox" checked subcategory="fastfood"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-restaurant.svg" class="icon-poi"></img>Fast Food &nbsp;<span id="subcount-fastfood"></span></li>
-              <li><input type="checkbox" checked subcategory="kawiarnia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-cafe.svg" class="icon-poi"></img>Kawiarnia &nbsp;<span id="subcount-kawiarnia"></span></li>
-              <li><input type="checkbox" checked subcategory="bar"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-bar.svg" class="icon-poi"></img>Bar &nbsp;<span id="subcount-bar"></span></li>
-              <li><input type="checkbox" checked subcategory="pub"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-bar.svg" class="icon-poi"></img>Pub &nbsp;<span id="subcount-pub"></span></li>
+              <li><input type="checkbox" checked data-subcategory="lodziarnia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-ice-cream.svg" class="icon-poi"/>Lodziarnia &nbsp;<span id="subcount-lodziarnia"></span></li>
+              <li><input type="checkbox" checked data-subcategory="restauracja"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-restaurant.svg" class="icon-poi"/>Restauracja &nbsp;<span id="subcount-restauracja"></span></li>
+              <li><input type="checkbox" checked data-subcategory="fastfood"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-restaurant.svg" class="icon-poi"/>Fast Food &nbsp;<span id="subcount-fastfood"></span></li>
+              <li><input type="checkbox" checked data-subcategory="kawiarnia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-cafe.svg" class="icon-poi"/>Kawiarnia &nbsp;<span id="subcount-kawiarnia"></span></li>
+              <li><input type="checkbox" checked data-subcategory="bar"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-bar.svg" class="icon-poi"/>Bar &nbsp;<span id="subcount-bar"></span></li>
+              <li><input type="checkbox" checked data-subcategory="pub"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/gastronomia-bar.svg" class="icon-poi"/>Pub &nbsp;<span id="subcount-pub"></span></li>
             </ul>
           </details>
         </li>
         <li>
           <details>
-            <summary><input type="checkbox" checked category="sklep"><span class="swatch-poi kategoria-sklep"></span>Sklepy &nbsp;<span id="count-shops"></span></summary>
+            <summary><input type="checkbox" checked data-category="sklep"><span class="swatch-poi kategoria-sklep"></span>Sklepy &nbsp;<span id="count-shops"></span></summary>
             <ul>
-              <li><input type="checkbox" checked subcategory="ch"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-building.svg" class="icon-poi"></img>Centra handlowe &nbsp;<span id="subcount-ch"></span></li>
-              <li><input type="checkbox" checked subcategory="monopolowy"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-alcohol-shop.svg" class="icon-poi"></img>Monopolowy &nbsp;<span id="subcount-monopolowy"></span></li>
-              <li><input type="checkbox" checked subcategory="piekarnia_cukiernia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-bakery.svg" class="icon-poi"></img>Piekarnia, cukiernia &nbsp;<span id="subcount-piekarnia_cukiernia"></span></li>
-              <li><input type="checkbox" checked subcategory="drogeria"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-shop.svg" class="icon-poi"></img>Drogeria &nbsp;<span id="subcount-drogeria"></span></li>
-              <li><input type="checkbox" checked subcategory="odziez_obuwie"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-clothing-store.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-shoe.svg" class="icons-poi"></img></div>Odzieżowy, obuwie &nbsp;<span id="subcount-odziez_obuwie"></span></li>
-              <li><input type="checkbox" checked subcategory="dzieciecy"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-scooter.svg" class="icon-poi"></img>Dziecięcy &nbsp;<span id="subcount-dzieciecy"></span></li>
-              <li><input type="checkbox" checked subcategory="market"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-grocery.svg" class="icon-poi"></img>Supermarket &nbsp;<span id="subcount-market"></span></li>
-              <li><input type="checkbox" checked subcategory="osiedlowy"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-convenience.svg" class="icon-poi"></img>Osiedlowy &nbsp;<span id="subcount-osiedlowy"></span></li>
-              <li><input type="checkbox" checked subcategory="warzywniak"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-school.svg" class="icon-poi"></img>Warzywniak &nbsp;<span id="subcount-warzywniak"></span></li>
-              <li><input type="checkbox" checked subcategory="rzeznik"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-slaughterhouse.svg" class="icon-poi"></img>Rzeźnik &nbsp;<span id="subcount-rzeznik"></span></li>
-              <li><input type="checkbox" checked subcategory="kwiaciarnia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-florist.svg" class="icon-poi"></img>Kwiaciarnia &nbsp;<span id="subcount-kwiaciarnia"></span></li>
-              <li><input type="checkbox" checked subcategory="sklepy_pozostale"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-marker.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-library.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-laundry.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-jewelry-store.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-car.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-bicycle.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-animal-shelter.svg" class="icons-poi"></img></div>Pozostałe &nbsp;<span id="subcount-sklepy_pozostale"></span></li>
+              <li><input type="checkbox" checked data-subcategory="ch"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-building.svg" class="icon-poi"/>Centra handlowe &nbsp;<span id="subcount-ch"></span></li>
+              <li><input type="checkbox" checked data-subcategory="monopolowy"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-alcohol-shop.svg" class="icon-poi"/>Monopolowy &nbsp;<span id="subcount-monopolowy"></span></li>
+              <li><input type="checkbox" checked data-subcategory="piekarnia_cukiernia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-bakery.svg" class="icon-poi"/>Piekarnia, cukiernia &nbsp;<span id="subcount-piekarnia_cukiernia"></span></li>
+              <li><input type="checkbox" checked data-subcategory="drogeria"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-shop.svg" class="icon-poi"/>Drogeria &nbsp;<span id="subcount-drogeria"></span></li>
+              <li><input type="checkbox" checked data-subcategory="odziez_obuwie"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-clothing-store.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-shoe.svg" class="icons-poi"/></div>Odzieżowy, obuwie &nbsp;<span id="subcount-odziez_obuwie"></span></li>
+              <li><input type="checkbox" checked data-subcategory="dzieciecy"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-scooter.svg" class="icon-poi"/>Dziecięcy &nbsp;<span id="subcount-dzieciecy"></span></li>
+              <li><input type="checkbox" checked data-subcategory="market"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-grocery.svg" class="icon-poi"/>Supermarket &nbsp;<span id="subcount-market"></span></li>
+              <li><input type="checkbox" checked data-subcategory="osiedlowy"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-convenience.svg" class="icon-poi"/>Osiedlowy &nbsp;<span id="subcount-osiedlowy"></span></li>
+              <li><input type="checkbox" checked data-subcategory="warzywniak"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-school.svg" class="icon-poi"/>Warzywniak &nbsp;<span id="subcount-warzywniak"></span></li>
+              <li><input type="checkbox" checked data-subcategory="rzeznik"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-slaughterhouse.svg" class="icon-poi"/>Rzeźnik &nbsp;<span id="subcount-rzeznik"></span></li>
+              <li><input type="checkbox" checked data-subcategory="kwiaciarnia"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-florist.svg" class="icon-poi"/>Kwiaciarnia &nbsp;<span id="subcount-kwiaciarnia"></span></li>
+              <li><input type="checkbox" checked data-subcategory="sklepy_pozostale"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-marker.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-library.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-laundry.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-jewelry-store.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-car.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-bicycle.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/sklep-animal-shelter.svg" class="icons-poi"/></div>Pozostałe &nbsp;<span id="subcount-sklepy_pozostale"></span></li>
             </ul>
           </details>
         </li>
         <li>
           <details>
-            <summary><input type="checkbox" checked category="usluga"><span class="swatch-poi kategoria-usluga"></span>Usługi &nbsp;<span id="count-services"></span></summary>
+            <summary><input type="checkbox" checked data-category="usluga"><span class="swatch-poi kategoria-usluga"></span>Usługi &nbsp;<span id="count-services"></span></summary>
             <ul>
-              <li><input type="checkbox" checked subcategory="fryzjer"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-hairdresser.svg" class="icon-poi"></img>Zakład fryzjerski &nbsp;<span id="subcount-fryzjer"></span></li>
-              <li><input type="checkbox" checked subcategory="beauty"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-heart.svg" class="icon-poi"></img>Salon piękności &nbsp;<span id="subcount-beauty"></span></li>
-              <li><input type="checkbox" checked subcategory="warsztat"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-car-repair.svg" class="icon-poi"></img>Warsztat samochodowy &nbsp;<span id="subcount-warsztat"></span></li>
-              <li><input type="checkbox" checked subcategory="krawiec_szewc"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-clothing-store.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-shoe.svg" class="icons-poi"></img></div>Zakład krawiecki, szewc &nbsp;<span id="subcount-krawiec_szewc"></span></li>
-              <li><input type="checkbox" checked subcategory="uslugi_pozostale"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-marker.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-laundry.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-dog-park.svg" class="icons-poi"></img><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-airport.svg" class="icons-poi"></img></div>Pozostałe &nbsp;<span id="subcount-uslugi_pozostale"></span></li>
+              <li><input type="checkbox" checked data-subcategory="fryzjer"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-hairdresser.svg" class="icon-poi"/>Zakład fryzjerski &nbsp;<span id="subcount-fryzjer"></span></li>
+              <li><input type="checkbox" checked data-subcategory="beauty"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-heart.svg" class="icon-poi"/>Salon piękności &nbsp;<span id="subcount-beauty"></span></li>
+              <li><input type="checkbox" checked data-subcategory="warsztat"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-car-repair.svg" class="icon-poi"/>Warsztat samochodowy &nbsp;<span id="subcount-warsztat"></span></li>
+              <li><input type="checkbox" checked data-subcategory="krawiec_szewc"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-clothing-store.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-shoe.svg" class="icons-poi"/></div>Zakład krawiecki, szewc &nbsp;<span id="subcount-krawiec_szewc"></span></li>
+              <li><input type="checkbox" checked data-subcategory="uslugi_pozostale"><div class="icons-poi"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-marker.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-laundry.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-dog-park.svg" class="icons-poi"/><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/usluga-airport.svg" class="icons-poi"/></div>Pozostałe &nbsp;<span id="subcount-uslugi_pozostale"></span></li>
             </ul>
           </details>
         </li>
-        <li><input type="checkbox" checked category="pusty"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/pusty-marker-stroked.svg" class="icon-poi"></img>Pusty lokal &nbsp;<span id="count-vacant"></span></li>
-        <li><input id="checkbox-zlikwidowane" type="checkbox" category="zlikwidowany"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/zlikwidowany-cross.svg" class="icon-poi"></img>Zlikwidowany lokal &nbsp;<span id="count-closed"></span></li>
+        <li><input type="checkbox" checked data-category="pusty"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/pusty-marker-stroked.svg" class="icon-poi"/>Pusty lokal &nbsp;<span id="count-vacant"></span></li>
+        <li><input id="checkbox-zlikwidowane" type="checkbox" data-category="zlikwidowany"><img src="https://ttomasz.github.io/ttursm/maki-icons/svgs/zlikwidowany-cross.svg" class="icon-poi"/>Zlikwidowany lokal &nbsp;<span id="count-closed"></span></li>
       </ul>
     </div>
     <hr>

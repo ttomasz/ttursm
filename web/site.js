@@ -4,6 +4,16 @@ if (window.innerWidth <= 480) {
     if (legendDetails) legendDetails.removeAttribute('open');
 }
 
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function isSafeUrl(url) {
+    return /^https?:\/\//.test(url);
+}
+
 function openingHoursReplace(s) {
     return s
         .replace('Mo', 'Pn')
@@ -100,10 +110,13 @@ function insertLogoImg(elementId, wikidataBrandId) {
         }
     })
     .then(url => {
-        if (url) {
+        if (url && isSafeUrl(url)) {
             let el = document.getElementById(elementId);
             if (el) {
-                el.innerHTML = `<img src="${url}" class="popup-logo"></img>`;
+                const img = document.createElement('img');
+                img.src = url;
+                img.className = 'popup-logo';
+                el.appendChild(img);
             }
         }
     })
@@ -141,7 +154,7 @@ map.on('load', function () {
                 'customers': 'Dla klientów',
                 'private': 'Prywatny (np. mieszkańców, pracowników)'
             };
-            const accessValue = accessMap[props.access] || props.access;
+            const accessValue = accessMap[props.access] || escapeHtml(props.access);
             html += `<strong>Rodzaj</strong>: ${accessValue}<br>`;
         } else {
             html += '<strong>Rodzaj</strong>: <i>brak danych</i><br>';
@@ -150,7 +163,7 @@ map.on('load', function () {
         if (props.fee === 'yes') {
             html += '<strong>Płatny</strong>: Tak<br>';
             if (props.charge) {
-                let oplata = props.charge.replace('hour', 'h');
+                let oplata = escapeHtml(props.charge.replace('hour', 'h'));
                 html += `<strong>Opłata</strong>: ${oplata}<br>`;
             }
         } else if (props.fee === 'no') {
@@ -160,16 +173,18 @@ map.on('load', function () {
         }
         
         if (props.capacity) {
-            html += `<strong>Liczba miejsc</strong>: ${props.capacity}<br>`;
+            html += `<strong>Liczba miejsc</strong>: ${escapeHtml(props.capacity)}<br>`;
         } else {
             html += `<strong>Liczba miejsc</strong>: <i>brak danych</i><br>`;
         }
         
         if (props['capacity:disabled']) {
-            html += `<strong>Liczba miejsc dla niepełnosprawnych</strong>: ${props['capacity:disabled']}<br>`;
+            html += `<strong>Liczba miejsc dla niepełnosprawnych</strong>: ${escapeHtml(props['capacity:disabled'])}<br>`;
         }
 
-        html += `<a href="${props['@url']}" target="_blank">Link do obiektu w OSM</a>`;
+        if (isSafeUrl(props['@url'])) {
+            html += `<a href="${escapeHtml(props['@url'])}" target="_blank">Link do obiektu w OSM</a>`;
+        }
 
         // html += '<hr>'
         // html += '<div class="popup-section-foldable">';
@@ -191,7 +206,7 @@ map.on('load', function () {
         let emoji = [];
         let html = '<div style="min-width:120px">';
         if (props['@label']) {
-            html += `<span class="popup-label kategoria-${props['@kategoria']}">${props['@label']}</span>`;
+            html += `<span class="popup-label kategoria-${escapeHtml(props['@kategoria'])}">${escapeHtml(props['@label'])}</span>`;
         } else {
             html += '<br>';
         }
@@ -200,14 +215,14 @@ map.on('load', function () {
             html += '<div id="brand-logo"></div>';
         }
         if (props.name) {
-            html += `<h3 class="popup-place-name">${props.name}</h3>`;
+            html += `<h3 class="popup-place-name">${escapeHtml(props.name)}</h3>`;
         }
         if (props.opening_hours) {
-            let oh = openingHoursReplace(props.opening_hours);
+            let oh = escapeHtml(openingHoursReplace(props.opening_hours));
             html += `<strong>Godziny otwarcia</strong>: ${oh}<br>`;
         }
         if (props.cuisine) {
-            let oh = cuisineReplace(props.cuisine);
+            let oh = escapeHtml(cuisineReplace(props.cuisine));
             html += `<strong>Kuchnia</strong>: ${oh}<br>`;
         }
         if (props.toilets) {
@@ -222,7 +237,7 @@ map.on('load', function () {
             }
         }
         if (props.phone) {
-            html += `<strong>Telefon</strong>: ${props['phone']}<br>`;
+            html += `<strong>Telefon</strong>: ${escapeHtml(props['phone'])}<br>`;
         }
         if (props.deliveries === 'yes') {
                 html += '<strong>Dostawy</strong>: Tak<br>';
@@ -231,16 +246,22 @@ map.on('load', function () {
             emoji.push("♿️");
         }
         if (props.website) {
-            html += `<a href="${props['website']}" target="_blank">Strona WWW</a><br>`;
+            if (isSafeUrl(props.website)) {
+                html += `<a href="${escapeHtml(props.website)}" target="_blank">Strona WWW</a><br>`;
+            }
         }
-        if (emoji) {
+        if (emoji.length) {
             let icons = emoji.join([separator = ' | ']);
             html += `${icons}<br>`;
+        } else {
+            html += '<br>';
         }
         // for (const key in props) {
         //     html += `<strong>${key}</strong>: ${props[key]}<br>`;
         // }
-        html += `<hr><a href="${props['@url']}" target="_blank">Link do obiektu w OSM</a>`;
+        if (isSafeUrl(props['@url'])) {
+            html += `<hr><a href="${escapeHtml(props['@url'])}" target="_blank">Link do obiektu w OSM</a>`;
+        }
 
         html += '</div>';
         new maplibregl.Popup()
@@ -306,13 +327,13 @@ map.on('load', function () {
         html += '<strong>Zlikwidowany</strong><br><br>';
         
         if (props.name) {
-            html += `<strong>Nazwa</strong>: ${props.name}<br>`;
+            html += `<strong>Nazwa</strong>: ${escapeHtml(props.name)}<br>`;
         } else {
             html += '<strong>Nazwa</strong>: <i>brak</i><br>';
         }
         
         if (props.description) {
-            html += `<strong>Opis</strong>: ${props.description}<br>`;
+            html += `<strong>Opis</strong>: ${escapeHtml(props.description)}<br>`;
         } else {
             html += `<strong>Opis</strong>: <i>brak</i><br>`;
         }
@@ -345,7 +366,7 @@ function enableAllCategories() {
 // --- init ---
 // prevent interaction until the source data is available
 disableAllCategories();
-let poiPromise = fetch("https://ttomasz.github.io/ttursm/data/poi.geojson")
+fetch("https://ttomasz.github.io/ttursm/data/poi.geojson")
     .then(response => response.json())
     .then(data => {
         poiData = data;
@@ -404,9 +425,9 @@ function computeSelections() {
     const checkedCategories = [];
     const checkedSubcategories = [];
     // iterate over category checkboxes first, but ignore the "zlikwidowane" control
-    document.querySelectorAll('input[type=checkbox][category]').forEach(cb => {
+    document.querySelectorAll('input[type=checkbox][data-category]').forEach(cb => {
         if (cb.id === 'checkbox-zlikwidowane') return; // skip removed checkbox
-        const cat = cb.getAttribute('category');
+        const cat = cb.getAttribute('data-category');
         if (cb.checked) {
             checkedCategories.push(cat);
         }
@@ -414,12 +435,12 @@ function computeSelections() {
     });
 
     // now gather subcategories that are still checked and whose category is also checked
-    document.querySelectorAll('input[type=checkbox][subcategory]').forEach(sc => {
+    document.querySelectorAll('input[type=checkbox][data-subcategory]').forEach(sc => {
         if (!sc.checked) return;
-        const sub = sc.getAttribute('subcategory');
+        const sub = sc.getAttribute('data-subcategory');
         const details = sc.closest('details');
         if (details) {
-            const parentCb = details.querySelector('summary>input[type=checkbox][category]');
+            const parentCb = details.querySelector('summary>input[type=checkbox][data-category]');
             if (parentCb && !parentCb.checked) return; // skip if parent category is off
         }
         checkedSubcategories.push(sub);
@@ -440,9 +461,7 @@ function updateZlikwidowaneVisibility() {
 function applyPoiFilter() {
     if (!poiData) return; // still loading
 
-    console.log("Updating POI layer...");
     let {checkedCategories, checkedSubcategories} = computeSelections();
-    console.log("Computed categories:", checkedCategories, checkedSubcategories);
 
     // build a filtered feature collection rather than modify original
     let filteredData = {
@@ -482,10 +501,10 @@ const legendChecks = Array.from(document.querySelectorAll('.legend input[type=ch
 legendChecks.forEach(cb => {
     cb.addEventListener('change', () => {
         // if a category has been toggled, disable/enable its subitems accordingly
-        if (cb.hasAttribute('category')) {
+        if (cb.hasAttribute('data-category')) {
             const details = cb.closest('details');
             if (details) {
-                details.querySelectorAll('input[type=checkbox][subcategory]').forEach(sc => {
+                details.querySelectorAll('input[type=checkbox][data-subcategory]').forEach(sc => {
                     sc.disabled = !cb.checked;
                     // keep checked state intact even when disabled
                     // (computeSelections ignores them when parent off)
