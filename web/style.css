@@ -57,6 +57,17 @@ body { margin: 0; padding: 0; font-family: lato; }
 }
 .legend summary::-webkit-details-marker { display: none; }
 
+/* legend-level toggle: move the fold icon to the right */
+.legend > details > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.legend > details > summary::after {
+    margin-left: auto;
+}
+
 /* add custom arrow indicator on right */
 .legend summary::after {
     content: "➕"; /* "▶"; */
