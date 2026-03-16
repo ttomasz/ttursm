@@ -1,0 +1,45 @@
+name: update pmtiles basemap
+
+on:
+  schedule:
+  - cron: "0 4 * * 0" # Every Sunday at 4:00 AM
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  update-basemap:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Download pmtiles binary
+      run: |
+        wget https://github.com/protomaps/go-pmtiles/releases/download/v1.30.1/go-pmtiles_1.30.1_Linux_x86_64.tar.gz
+        tar -xzf go-pmtiles_1.30.1_Linux_x86_64.tar.gz
+
+    - name: Get latest pmtiles build
+      id: latest
+      run: |
+        LATEST=$(curl -s https://build-metadata.protomaps.dev/builds.json | jq -r '.[-1].key' | sed 's/\.pmtiles$//')
+        echo "latest=$LATEST" >> $GITHUB_OUTPUT
+
+    - name: Extract basemap
+      run: |
+        ./pmtiles extract https://build.protomaps.com/${{ steps.latest.outputs.latest }}.pmtiles web/data/ursus.pmtiles --bbox=20.820808,52.165720,20.931702,52.222542 --minzoom=11
+
+    - name: Commit and push changes
+      id: commit
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add -A
+        git commit -a -m "updated basemap" && echo "changed=true" >> "$GITHUB_OUTPUT" || echo "Nothing to commit"
+        git push
+
+    - name: Trigger GitHub Pages deploy
+      if: steps.commit.outputs.changed == 'true'
+      run: gh workflow run static.yml
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
