@@ -1,12 +1,12 @@
 {
-  "download_dt": "2026-04-01 05:37",
+  "download_dt": "2026-04-02 05:22",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
   "shops": 397,
   "services": 153,
   "med": 47,
   "vacant": 53,
-  "food": 107,
+  "food": 106,
   "uncategorized": 0,
   "uncategorized_ids": [],
   "poi_subcategories": {
@@ -17,7 +17,7 @@
     "market": 20,
     "piekarnia_cukiernia": 37,
     "kawiarnia": 15,
-    "fastfood": 22,
+    "fastfood": 21,
     "monopolowy": 14,
     "apteka": 15,
     "dentysta": 15,
