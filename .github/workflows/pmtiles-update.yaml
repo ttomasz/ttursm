@@ -16,8 +16,11 @@ jobs:
 
     - name: Download pmtiles binary
       run: |
-        wget https://github.com/protomaps/go-pmtiles/releases/download/v1.30.1/go-pmtiles_1.30.1_Linux_x86_64.tar.gz
-        tar -xzf go-pmtiles_1.30.1_Linux_x86_64.tar.gz
+        mkdir -p pmtiles-bin
+        wget -O pmtiles-bin/go-pmtiles_1.30.1_Linux_x86_64.tar.gz \
+          https://github.com/protomaps/go-pmtiles/releases/download/v1.30.1/go-pmtiles_1.30.1_Linux_x86_64.tar.gz
+        tar -xzf pmtiles-bin/go-pmtiles_1.30.1_Linux_x86_64.tar.gz -C pmtiles-bin
+        chmod +x pmtiles-bin/pmtiles
 
     - name: Get latest pmtiles build
       id: latest
@@ -27,7 +30,9 @@ jobs:
 
     - name: Extract basemap
       run: |
-        ./pmtiles extract https://build.protomaps.com/${{ steps.latest.outputs.latest }}.pmtiles web/data/ursus.pmtiles --bbox=20.820808,52.165720,20.931702,52.222542 --minzoom=11
+        pmtiles_bin=pmtiles-bin/pmtiles
+        $pmtiles_bin extract https://build.protomaps.com/${{ steps.latest.outputs.latest }}.pmtiles \
+          web/data/ursus.pmtiles --bbox=20.820808,52.165720,20.931702,52.222542 --minzoom=11
 
     - name: Commit and push changes
       id: commit
