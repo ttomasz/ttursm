@@ -22,6 +22,7 @@ import tenacity
 
 
 HTTPX_TIMEOUT = httpx.Timeout(90.0)
+HTTP_USER_AGENT = "https://github.com/ttomasz/ttursm/"
 
 OVERPASS_URLS = [
     "https://overpass-api.de/api/interpreter",
@@ -524,7 +525,7 @@ def prepare_summary(geojson_poi: dict, download_dt: datetime) -> Summary:
     max_attempt_number=10
 )
 def get_parking(overpass_url: str) -> dict:
-    response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING}, timeout=HTTPX_TIMEOUT)
+    response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING}, headers={"User-Agent": HTTP_USER_AGENT}, timeout=HTTPX_TIMEOUT)
     response.raise_for_status()
     data = response.json()
     geojson = osm2geojson.json2geojson(data=data, raise_on_failure=True, filter_used_refs=True)
@@ -539,7 +540,7 @@ def get_parking(overpass_url: str) -> dict:
     max_attempt_number=10
 )
 def get_parking_spaces(overpass_url: str) -> dict:
-    response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING_SPACES}, timeout=HTTPX_TIMEOUT)
+    response = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_PARKING_SPACES}, headers={"User-Agent": HTTP_USER_AGENT}, timeout=HTTPX_TIMEOUT)
     response.raise_for_status()
     data = response.json()
     geojson = osm2geojson.json2geojson(data=data, raise_on_failure=True, filter_used_refs=True)
@@ -551,7 +552,7 @@ def get_parking_spaces(overpass_url: str) -> dict:
     max_attempt_number=10
 )
 def get_poi_outlines(overpass_url: str) -> dict:
-    response_outlines = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_POI_OUT_LINES}, timeout=HTTPX_TIMEOUT)
+    response_outlines = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_POI_OUT_LINES}, headers={"User-Agent": HTTP_USER_AGENT}, timeout=HTTPX_TIMEOUT)
     response_outlines.raise_for_status()
     data_outlines = response_outlines.json()
     geojson_outlines = osm2geojson.json2geojson(data=data_outlines, raise_on_failure=True, filter_used_refs=True)
@@ -563,7 +564,7 @@ def get_poi_outlines(overpass_url: str) -> dict:
     max_attempt_number=10
 )
 def get_poi(overpass_url: str) -> dict:
-    response_points = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_POI}, timeout=HTTPX_TIMEOUT)
+    response_points = httpx.post(url=overpass_url, data={"data": OVERPASS_QUERY_POI}, headers={"User-Agent": HTTP_USER_AGENT}, timeout=HTTPX_TIMEOUT)
     response_points.raise_for_status()
     data_points = response_points.json()
     geojson_points = osm2geojson.json2geojson(data=data_points, raise_on_failure=True, filter_used_refs=True)
