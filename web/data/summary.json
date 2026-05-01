@@ -1,11 +1,11 @@
 {
-  "download_dt": "2026-04-30 06:17",
+  "download_dt": "2026-05-01 06:28",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
-  "shops": 398,
+  "shops": 399,
   "services": 156,
   "med": 48,
-  "vacant": 53,
+  "vacant": 52,
   "food": 104,
   "uncategorized": 1,
   "uncategorized_ids": [
@@ -17,7 +17,7 @@
     "osiedlowy": 73,
     "restauracja": 59,
     "market": 20,
-    "piekarnia_cukiernia": 37,
+    "piekarnia_cukiernia": 38,
     "kawiarnia": 15,
     "fastfood": 20,
     "monopolowy": 14,
