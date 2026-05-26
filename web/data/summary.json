@@ -1,11 +1,11 @@
 {
-  "download_dt": "2026-05-25 08:06",
+  "download_dt": "2026-05-26 07:00",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
   "shops": 399,
-  "services": 156,
+  "services": 157,
   "med": 48,
-  "vacant": 52,
+  "vacant": 51,
   "food": 104,
   "uncategorized": 1,
   "uncategorized_ids": [
@@ -26,7 +26,7 @@
     "warzywniak": 12,
     "dzieciecy": 7,
     "fryzjer": 43,
-    "uslugi_pozostale": 33,
+    "uslugi_pozostale": 34,
     "beauty": 62,
     "rzeznik": 9,
     "lodziarnia": 8,
