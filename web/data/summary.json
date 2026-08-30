@@ -1,12 +1,12 @@
 {
-  "download_dt": "2026-08-29 10:24",
+  "download_dt": "2026-08-30 09:27",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
   "shops": 400,
   "services": 158,
   "med": 49,
   "vacant": 47,
-  "food": 105,
+  "food": 104,
   "uncategorized": 1,
   "uncategorized_ids": [
     "node/13720338089"
@@ -15,7 +15,7 @@
     "sklepy_pozostale": 110,
     "warsztat": 10,
     "osiedlowy": 74,
-    "restauracja": 59,
+    "restauracja": 58,
     "market": 19,
     "piekarnia_cukiernia": 38,
     "kawiarnia": 16,
