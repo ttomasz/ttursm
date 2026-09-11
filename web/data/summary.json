@@ -1,8 +1,8 @@
 {
-  "download_dt": "2026-09-10 08:22",
+  "download_dt": "2026-09-11 08:17",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
-  "shops": 401,
+  "shops": 402,
   "services": 158,
   "med": 49,
   "vacant": 46,
@@ -12,7 +12,7 @@
     "node/13720338089"
   ],
   "poi_subcategories": {
-    "sklepy_pozostale": 111,
+    "sklepy_pozostale": 112,
     "warsztat": 10,
     "osiedlowy": 74,
     "restauracja": 58,
