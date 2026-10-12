@@ -1,5 +1,5 @@
 {
-  "download_dt": "2026-10-09 10:53",
+  "download_dt": "2026-10-12 11:17",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
   "shops": 404,
@@ -12,7 +12,7 @@
     "node/13720338089"
   ],
   "poi_subcategories": {
-    "sklepy_pozostale": 113,
+    "sklepy_pozostale": 114,
     "warsztat": 9,
     "osiedlowy": 75,
     "restauracja": 60,
@@ -24,7 +24,7 @@
     "apteka": 16,
     "dentysta": 15,
     "warzywniak": 12,
-    "dzieciecy": 8,
+    "dzieciecy": 7,
     "fryzjer": 41,
     "uslugi_pozostale": 34,
     "beauty": 65,
