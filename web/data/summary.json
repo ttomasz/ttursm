@@ -1,8 +1,8 @@
 {
-  "download_dt": "2026-11-05 11:28",
+  "download_dt": "2026-11-06 11:26",
   "ground_parking_capacity": 0,
   "ground_parking_capacity_for_disabled": 0,
-  "shops": 405,
+  "shops": 406,
   "services": 157,
   "med": 49,
   "vacant": 48,
@@ -12,11 +12,11 @@
     "node/13720338089"
   ],
   "poi_subcategories": {
-    "sklepy_pozostale": 115,
+    "sklepy_pozostale": 116,
     "warsztat": 9,
     "osiedlowy": 75,
     "restauracja": 60,
-    "market": 19,
+    "market": 18,
     "piekarnia_cukiernia": 39,
     "kawiarnia": 17,
     "fastfood": 21,
@@ -30,7 +30,7 @@
     "beauty": 65,
     "rzeznik": 9,
     "lodziarnia": 8,
-    "odziez_obuwie": 89,
+    "odziez_obuwie": 90,
     "drogeria": 11,
     "weterynarz": 7,
     "kwiaciarnia": 13,
